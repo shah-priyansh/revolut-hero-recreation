@@ -22,6 +22,8 @@ const RevolutHero = () => {
     const description = useRef();
 
     useGSAP(() => {
+        const isMobile = window.innerWidth <= 768;
+
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: container.current,
@@ -40,7 +42,8 @@ const RevolutHero = () => {
         }, 0);
 
         tl.to(description.current, {
-            x: -100,
+            x: isMobile ? 0 : -100,
+            y: isMobile ? 50 : 0,
             opacity: 0,
             duration: 1,
             ease: "power2.inOut"
@@ -61,25 +64,24 @@ const RevolutHero = () => {
         );
 
         tl.to(expandingBox.current, {
-            width: 380,
-            height: 560,
-            borderRadius: 40,
+            width: isMobile ? 280 : 380,
+            height: isMobile ? 420 : 560,
+            borderRadius: isMobile ? 32 : 40,
             boxShadow: "0 20px 80px rgba(0,0,0,0.12)",
             duration: 2,
             ease: "expo.inOut"
         }, 0);
 
         // 4. The image inside the box ZOOMS OUT
-        // It starts at a higher scale when the box is large (simulating a zoom)
-        // and scales down to 1.0 as the box shrinks.
         tl.fromTo(innerImage.current,
             { scale: 2.2 },
             { scale: 1.0, duration: 2, ease: "expo.inOut" },
             0);
 
-        // 5. Side cards slide in as the box reaches its destination
+        // 5. Side cards slide in (vertical on mobile, horizontal on desktop)
         tl.to(leftCard.current, {
-            x: 0,
+            x: isMobile ? 0 : 0,
+            y: isMobile ? 0 : 0,
             opacity: 1,
             scale: 1,
             duration: 1,
@@ -87,7 +89,8 @@ const RevolutHero = () => {
         }, 0.8);
 
         tl.to(rightCard.current, {
-            x: 0,
+            x: isMobile ? 0 : 0,
+            y: isMobile ? 0 : 0,
             opacity: 1,
             scale: 1,
             duration: 1,
