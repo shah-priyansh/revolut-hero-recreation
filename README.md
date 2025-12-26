@@ -9,6 +9,7 @@ A React recreation of the Revolut-style hero section with scroll-based animation
 - Smooth fade transitions between background and card
 - Side cards that slide in during scroll
 - UI overlays with balance and notification elements
+- **Responsive design** - cards stack vertically on mobile
 
 ## Tech Stack
 
