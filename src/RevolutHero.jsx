@@ -64,9 +64,9 @@ const RevolutHero = () => {
         );
 
         tl.to(expandingBox.current, {
-            width: isMobile ? 280 : 380,
-            height: isMobile ? 420 : 560,
-            borderRadius: isMobile ? 32 : 40,
+            width: isMobile ? 260 : 380,
+            height: isMobile ? 340 : 560,
+            borderRadius: isMobile ? 28 : 40,
             boxShadow: "0 20px 80px rgba(0,0,0,0.12)",
             duration: 2,
             ease: "expo.inOut"
@@ -74,28 +74,28 @@ const RevolutHero = () => {
 
         // 4. The image inside the box ZOOMS OUT
         tl.fromTo(innerImage.current,
-            { scale: 2.2 },
+            { scale: isMobile ? 1.5 : 2.2 },
             { scale: 1.0, duration: 2, ease: "expo.inOut" },
             0);
 
-        // 5. Side cards slide in (vertical on mobile, horizontal on desktop)
+        // 5. Side cards slide in (staggered on mobile, simultaneous on desktop)
         tl.to(leftCard.current, {
-            x: isMobile ? 0 : 0,
-            y: isMobile ? 0 : 0,
+            x: 0,
+            y: 0,
             opacity: 1,
             scale: 1,
-            duration: 1,
-            ease: "back.out(1.2)"
-        }, 0.8);
+            duration: isMobile ? 0.8 : 1,
+            ease: "back.out(1.4)"
+        }, isMobile ? 1.0 : 0.8);
 
         tl.to(rightCard.current, {
-            x: isMobile ? 0 : 0,
-            y: isMobile ? 0 : 0,
+            x: 0,
+            y: 0,
             opacity: 1,
             scale: 1,
-            duration: 1,
-            ease: "back.out(1.2)"
-        }, 0.8);
+            duration: isMobile ? 0.8 : 1,
+            ease: "back.out(1.4)"
+        }, isMobile ? 1.3 : 0.8);
 
         tl.to([uiTop.current, uiBottom.current], {
             opacity: 1,
