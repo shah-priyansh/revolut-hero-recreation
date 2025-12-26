@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #191c1f;
+  --accent-color: #0666eb;
+  --card-shadow: 0 10px 50px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+.hero-wrapper {
+  height: 500vh;
+  /* More scroll space for the zoom effect */
+  background: white;
+}
+
+.sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Base background that stays white */
+.background-base {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 0;
+}
+
+/* The fading background image */
+.background-image-fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.headline-container {
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.hero-headline {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: white;
+  /* Initial color is often white when over the image */
+}
+
+.feature-headline {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  transform: translateY(30px);
+  color: #191c1f;
+}
+
+.animation-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.cards-grid {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 40px;
+}
+
+/* The "Window" that shrinks */
+.expanding-box {
+  width: 100vw;
+  /* Starts very large/full-ish */
+  height: 100vh;
+  border-radius: 0px;
+  /* Starts as full screen */
+  overflow: hidden;
+  position: relative;
+  box-shadow: none;
+  background: transparent;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-radius 0.1s linear;
+}
+
+.box-inner-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center center;
+}
+
+.side-card {
+  width: 320px;
+  height: 480px;
+  border-radius: 40px;
+  background: white;
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  flex-shrink: 0;
+}
+
+.card-left {
+  transform: translateX(-150px) scale(0.85);
+}
+
+.card-right {
+  transform: translateX(150px) scale(0.85);
+}
+
+/* Floating UI inside the box */
+.ui-overlay {
+  position: absolute;
+  padding: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  color: white;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.ui-top {
+  top: 10%;
+  text-align: center;
+}
+
+.balance {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.ui-bottom {
+  bottom: 8%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.notification {
+  background: rgba(255, 255, 255, 0.95);
+  color: black;
+  padding: 16px 24px;
+  border-radius: 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Description text that appears initially */
+.description-text {
+  position: absolute;
+  top: 45%;
+  left: 8%;
+  max-width: 350px;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: white;
+  z-index: 21;
+}
+
+.cta-button {
+  background: white;
+  color: black;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 32px;
+  font-weight: 600;
+  margin-top: 32px;
+  cursor: pointer;
+  font-size: 1rem;
+}
