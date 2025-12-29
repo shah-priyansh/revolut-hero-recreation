@@ -1,4 +1,4 @@
-import RevolutHero from './RevolutHero'
+import RevolutHero from './components/RevolutHero/RevolutHero'
 
 function App() {
   return (
