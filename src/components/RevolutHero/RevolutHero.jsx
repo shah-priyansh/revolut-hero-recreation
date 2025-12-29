@@ -112,7 +112,15 @@ const RevolutHero = () => {
             }
 
             if (backgroundFade.current) {
-                gsap.set(backgroundFade.current, { opacity: 1 });
+                gsap.set(backgroundFade.current, { 
+                    opacity: 1,
+                    scale: 1.0 
+                });
+            }
+        } else {
+            // Set initial zoomed-in state for desktop
+            if (innerImage.current) {
+                gsap.set(innerImage.current, { scale: 1.5 }); // Reduced from 2.2 to 1.5
             }
         }
     }, []);
@@ -169,7 +177,7 @@ const RevolutHero = () => {
 
         // 4. The image inside the box ZOOMS OUT
         tl.fromTo(innerImage.current,
-            { scale: 2.2 },
+            { scale: 1.5 }, // Reduced from 2.2 to 1.5 for less zoom
             { scale: 1.0, duration: 2, ease: "expo.inOut" },
             0);
 
