@@ -165,7 +165,7 @@ body {
   font-weight: 600;
   padding: 8px 12px;
   border-radius: 6px;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
@@ -176,8 +176,10 @@ body {
 }
 
 .nav-link:hover {
-  color: var(--accent-color);
-  background-color: rgba(6, 102, 235, 0.1);
+  color: #0290C4;
+  background-color: rgba(2, 144, 196, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(2, 144, 196, 0.2);
 }
 
 /* Mobile Menu Button */
@@ -276,7 +278,7 @@ body {
   font-weight: 700;
   padding: 16px 20px;
   border-radius: 8px;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: left;
   display: block;
 }
@@ -284,7 +286,9 @@ body {
 .mobile-nav-link:hover,
 .mobile-nav-link:active {
   color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(2, 144, 196, 0.2);
+  transform: translateX(8px);
+  box-shadow: 0 4px 12px rgba(2, 144, 196, 0.15);
 }
 
 .mobile-menu-logo {
@@ -610,11 +614,13 @@ body {
   font-size: 1rem;
   font-family: 'Inter', sans-serif;
   align-self: flex-start;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cta-button:hover {
-  background: #5ab89a;
+  background: #0290C4;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(2, 144, 196, 0.3);
 }
 
 /* Tablet Styles */
@@ -1050,13 +1056,14 @@ body {
   font-size: 1.1rem;
   color: var(--text-color);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
 
 .finance-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(2, 144, 196, 0.15);
+  border-color: rgba(2, 144, 196, 0.3);
 }
 
 /* Finance Section Responsive */

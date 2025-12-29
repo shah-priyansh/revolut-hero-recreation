@@ -7,7 +7,7 @@ import './RevolutHero.css';
 import heroImage from '../../assets/images/hero-background.jpg';
 import logoImage from '../../assets/images/logo.svg';
 import image1 from '../../assets/images/image-1.png';
-import image2 from '../../assets/images/image-2.png';
+import image3 from '../../assets/images/image-3.png';
 import { LuxryFrame } from '../LuxryFrame/LuxryFrame';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -148,21 +148,21 @@ const RevolutHero = () => {
             x: -100,
             y: 0,
             opacity: 0,
-            duration: 1,
+            duration: 0.7, // Reduced from 1 to 0.7
             ease: "power2.inOut"
         }, 0);
 
         // 2. The background image layer fades to white
         tl.to(backgroundFade.current, {
             opacity: 0,
-            duration: 1.5,
+            duration: 1.0, // Reduced from 1.5 to 1.0
             ease: "power1.inOut"
         }, 0);
 
         // 3. The "Box" fades in and shrinks down from full-screen to card size
         tl.fromTo(expandingBox.current,
             { opacity: 0 },
-            { opacity: 1, duration: 0.5, ease: "power1.in" },
+            { opacity: 1, duration: 0.3, ease: "power1.in" }, // Reduced from 0.5 to 0.3
             0
         );
 
@@ -171,14 +171,14 @@ const RevolutHero = () => {
             height: 560,
             borderRadius: 40,
             boxShadow: "0 20px 80px rgba(0,0,0,0.12)",
-            duration: 2,
+            duration: 1.4, // Reduced from 2 to 1.4
             ease: "expo.inOut"
         }, 0);
 
         // 4. The image inside the box ZOOMS OUT
         tl.fromTo(innerImage.current,
             { scale: 1.5 }, // Reduced from 2.2 to 1.5 for less zoom
-            { scale: 1.0, duration: 2, ease: "expo.inOut" },
+            { scale: 1.0, duration: 1.4, ease: "expo.inOut" }, // Reduced from 2 to 1.4
             0);
 
         // 5. Side cards slide in
@@ -187,18 +187,18 @@ const RevolutHero = () => {
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 1,
+            duration: 0.7, // Reduced from 1 to 0.7
             ease: "back.out(1.4)"
-        }, 0.8);
+        }, 0.6); // Reduced delay from 0.8 to 0.6
 
         tl.to(rightCard.current, {
             x: 0,
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 1,
+            duration: 0.7, // Reduced from 1 to 0.7
             ease: "back.out(1.4)"
-        }, 0.8);
+        }, 0.6); // Reduced delay from 0.8 to 0.6
 
 
     }, { scope: container });
@@ -351,13 +351,13 @@ const RevolutHero = () => {
                             <div className="side-card card-right" ref={rightCard}>
                                 <img
                                     className="box-inner-image"
-                                    src={image2}
+                                    src={image3}
                                     alt="Image 1"
                                 />
                                 <div className="ui-overlay ui-bottom">
                                     <div className="card-notification">
-                                        <div className="card-notification-title">Authenticate before you Buy</div>
-                                        <div className="card-notification-subtitle">Through our network of certified Watch Makers</div>
+                                        <div className="card-notification-title">Track value of your collection in real-time</div>
+                                        <div className="card-notification-subtitle">With our free Watch Collector’s App</div>
                                     </div>
                                 </div>
                             </div>
