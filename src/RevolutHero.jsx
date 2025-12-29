@@ -232,12 +232,29 @@ const RevolutHero = () => {
                     </div>
 
                     {/* Mobile Navigation Menu */}
-                    <nav className={`mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-                        <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
-                        <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
-                        <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>About Us</a>
-                        <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact & Support</a>
-                        <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Download App</a>
+                    <nav 
+                        className={`mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}
+                        onClick={(e) => {
+                            // Close menu when clicking on backdrop
+                            if (e.target === e.currentTarget) {
+                                setIsMobileMenuOpen(false);
+                            }
+                        }}
+                    >
+                        <div className="mobile-menu-content">
+                            <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
+                            <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
+                            <div className="mobile-menu-logo">
+                                <img
+                                    src={logoImage}
+                                    alt="iLock Logo"
+                                    className="mobile-logo-image"
+                                />
+                            </div>
+                            <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>About Us</a>
+                            <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact & Support</a>
+                            <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Download App</a>
+                        </div>
                     </nav>
                 </header>
                 <div className="sticky-container">
