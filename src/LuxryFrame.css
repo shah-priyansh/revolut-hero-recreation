@@ -692,6 +692,21 @@ h1,h2,h3,h4,h5,h6 {
 
 
 /* Highest Prices Section Start */
+.highest-prices-section {
+    background-color: #ffffff;
+}
+
+.highest-prices-section video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.sec-tag {
+    margin-bottom: 24px;
+}
+
 .sec-tag span {
     font-weight: 500;
     font-size: 24px;
@@ -699,21 +714,69 @@ h1,h2,h3,h4,h5,h6 {
     letter-spacing: -0.02em;
     color: #484C52;
     border: 2px solid var(--primary);
-    padding: 5px 20px ;
+    padding: 5px 20px;
     border-radius: 30px;
+    display: inline-block;
 }
+
 .section-content h1 {
     font-weight: 300;
     font-size: 80px;
     line-height: 100%;
     letter-spacing: -0.02em;
     color: #41B6A2;
+    margin-bottom: 24px;
 }
+
+.section-content .sec-pra {
+    margin-top: 24px;
+}
+
 .section-content p {
     font-size: 24px;
     line-height: 134%;
     letter-spacing: -0.02em;
     margin-bottom: 20px;
+    color: #191c1f;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1199px) {
+    .section-content h1 {
+        font-size: 60px;
+    }
+    .section-content p {
+        font-size: 18px;
+    }
+    .sec-tag span {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .section-content h1 {
+        font-size: 40px;
+    }
+    .section-content p {
+        font-size: 16px;
+    }
+    .sec-tag span {
+        font-size: 16px;
+        padding: 4px 16px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .section-content h1 {
+        font-size: 32px;
+    }
+    .section-content p {
+        font-size: 14px;
+    }
+    .sec-tag span {
+        font-size: 14px;
+        padding: 4px 12px;
+    }
 }
 
 /* Highest Prices Section End */

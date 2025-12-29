@@ -6,6 +6,8 @@ import './RevolutHero.css';
 import heroImage from './assets/images/hero-background.jpg';
 import logoImage from './assets/images/logo.svg';
 import image1 from './assets/images/image-1.png';
+import image2 from './assets/images/image-2.png';
+import { LuxryFrame } from './LuxryFrame';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,8 +18,6 @@ const RevolutHero = () => {
     const innerImage = useRef();
     const leftCard = useRef();
     const rightCard = useRef();
-    const uiTop = useRef();
-    const uiBottom = useRef();
     const description = useRef();
     const headerRef = useRef();
     const [isScrolled, setIsScrolled] = useState(false);
@@ -105,9 +105,6 @@ const RevolutHero = () => {
                 });
             }
 
-            if (uiTop.current && uiBottom.current) {
-                gsap.set([uiTop.current, uiBottom.current], { opacity: 1 });
-            }
 
             if (description.current) {
                 gsap.set(description.current, { opacity: 1 });
@@ -194,148 +191,135 @@ const RevolutHero = () => {
             ease: "back.out(1.4)"
         }, 0.8);
 
-        tl.to([uiTop.current, uiBottom.current], {
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out"
-        }, 0.8);
 
     }, { scope: container });
 
     return (
-        <div className="hero-wrapper" ref={container}>
-            <header className="header" ref={headerRef}>
-                <div className="header-content">
-                    {/* Logo and Brand */}
-                    <div className="logo-section">
-                        <img
-                            src={logoImage}
-                            alt="iLock Logo"
-                            className="logo-image"
-                        />
+        <>
+            <div className="hero-wrapper" ref={container}>
+                <header className="header" ref={headerRef}>
+                    <div className="header-content">
+                        {/* Logo and Brand */}
+                        <div className="logo-section">
+                            <img
+                                src={logoImage}
+                                alt="iLock Logo"
+                                className="logo-image"
+                            />
+                        </div>
+
+                        {/* Desktop Navigation Menu */}
+                        <nav className="nav-menu">
+                            <a href="#" className="nav-link">Home</a>
+                            <a href="#" className="nav-link">Services</a>
+                            <a href="#" className="nav-link">About Us</a>
+                            <a href="#" className="nav-link">Contact & Support</a>
+                            <a href="#" className="nav-link">Download App</a>
+                        </nav>
+
+                        {/* Mobile Menu Button */}
+                        <button
+                            className="mobile-menu-button"
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            aria-label="Toggle menu"
+                        >
+                            <span className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </button>
                     </div>
 
-                    {/* Desktop Navigation Menu */}
-                    <nav className="nav-menu">
-                        <a href="#" className="nav-link">Home</a>
-                        <a href="#" className="nav-link">Services</a>
-                        <a href="#" className="nav-link">About Us</a>
-                        <a href="#" className="nav-link">Contact & Support</a>
-                        <a href="#" className="nav-link">Download App</a>
+                    {/* Mobile Navigation Menu */}
+                    <nav className={`mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+                        <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
+                        <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
+                        <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>About Us</a>
+                        <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact & Support</a>
+                        <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Download App</a>
                     </nav>
+                </header>
+                <div className="sticky-container">
+                    {/* Layer 1: Base background (Solid White) */}
+                    <div className="background-base"></div>
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        className="mobile-menu-button"
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        <span className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </button>
-                </div>
+                    {/* Layer 2: Background Image Fade */}
+                    <div
+                        className="background-image-fade"
+                        ref={backgroundFade}
+                        style={{ backgroundImage: `url(${heroImage})` }}
+                    ></div>
 
-                {/* Mobile Navigation Menu */}
-                <nav className={`mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-                    <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
-                    <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
-                    <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>About Us</a>
-                    <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact & Support</a>
-                    <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Download App</a>
-                </nav>
-            </header>
-            <div className="sticky-container">
-                {/* Layer 1: Base background (Solid White) */}
-                <div className="background-base"></div>
+                    <div className="description-text" ref={description}>
+                        <h1 className="hero-main-text">
+                            A safer, smarter way to{' '}
+                            <span className="highlight-text">sell your watch for immediate cash</span>
+                            {' '}at the highest prices… with options to buy back
+                        </h1>
+                        <p className="hero-sub-text">End-to-end Global Trading of Luxury Watches with guaranteed protection</p>
+                        <button className="cta-button">Learn More</button>
+                    </div>
 
-                {/* Layer 2: Background Image Fade */}
-                <div
-                    className="background-image-fade"
-                    ref={backgroundFade}
-                    style={{ backgroundImage: `url(${heroImage})` }}
-                ></div>
-
-                <div className="description-text" ref={description}>
-                    <p>Home or away, local or global — move freely between countries and currencies. Sign up for free, in a tap.</p>
-                    <button className="cta-button">Download the app</button>
-                </div>
-
-                <div className="animation-viewport">
-                    <div className="cards-grid">
-                        {/* Main Shrinking Box */}
+                    <div className="animation-viewport">
+                        <div className="cards-grid">
+                            {/* Main Shrinking Box */}
 
 
-                        {/* Left Card */}
-                        <div className="side-card card-left" ref={leftCard}>
-                            <img
-                                className="box-inner-image"
-                                src={image1}
-                                alt="Image 1"
-                            />
-                            <div className="ui-overlay ui-bottom" ref={uiBottom}>
-                                <div className="notification  flex flex-column">
-                                    <div className="flex flex-row">
-                                        <div style={{ fontSize: '0.9rem', fontWeight: 700 }}>Get The Highest
-                                            Prices</div>
-                                        <div style={{ fontSize: '0.8rem', opacity: 0.6 }}>Through our global </div>
+                            {/* Left Card */}
+                            <div className="side-card card-left" ref={leftCard}>
+                                <img
+                                    className="box-inner-image"
+                                    src={image1}
+                                    alt="Image 1"
+                                />
+                                <div className="ui-overlay ui-bottom">
+                                    <div className="card-notification">
+                                        <div className="card-notification-title">Get Immediate Cash</div>
+                                        <div className="card-notification-subtitle">With option to buyback</div>
                                     </div>
-                                    <div style={{ marginLeft: 'auto', fontWeight: 700, color: '#00a83e' }}>dealer auction platform</div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div className="expanding-box" ref={expandingBox}>
-                            <img
-                                className="box-inner-image"
-                                src={heroImage}
-                                alt="Hero"
-                                ref={innerImage}
-                            />
 
-                            <div className="ui-overlay ui-top" ref={uiTop}>
-                                <div style={{ fontSize: '0.9rem', opacity: 0.9, fontWeight: 600 }}>Personal</div>
-                                <div className="balance">£6,012</div>
-                                <div style={{ background: 'rgba(255,255,255,0.25)', padding: '6px 16px', borderRadius: '20px', display: 'inline-block', fontSize: '0.8rem', marginTop: '12px', backdropFilter: 'blur(10px)' }}>Accounts</div>
-                            </div>
+                            <div className="expanding-box" ref={expandingBox}>
+                                <img
+                                    className="box-inner-image"
+                                    src={heroImage}
+                                    alt="Hero"
+                                    ref={innerImage}
+                                />
 
-                            <div className="ui-overlay ui-bottom" ref={uiBottom}>
-                                <div className="notification">
-                                    <div style={{ width: 40, height: 40, background: '#e0e0e0', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>🏢</div>
-                                    <div>
-                                        <div style={{ fontSize: '0.9rem', fontWeight: 700 }}>Salary</div>
-                                        <div style={{ fontSize: '0.8rem', opacity: 0.6 }}>Today, 11:28</div>
+
+
+                                <div className="ui-overlay ui-bottom">
+                                    <div className="card-notification">
+                                        <div className="card-notification-title">Get The Highest Prices</div>
+                                        <div className="card-notification-subtitle">Through our global dealer auction platform</div>
                                     </div>
-                                    <div style={{ marginLeft: 'auto', fontWeight: 700, color: '#00a83e' }}>+£2,550</div>
                                 </div>
                             </div>
-                        </div>
 
-                        {/* Right Card */}
-                        <div className="side-card card-right" ref={rightCard}>
-                            <div style={{ fontSize: '2rem', marginBottom: '20px' }}>🏠</div>
-                            <div className="card-title">House bills</div>
-                            <div className="card-subtitle">Today, 09:15</div>
-                            <div className="card-content">
-                                <p>Manage all your subscriptions and bills in one place. Never miss a payment.</p>
+                            {/* Right Card */}
+                            <div className="side-card card-right" ref={rightCard}>
+                                <img
+                                    className="box-inner-image"
+                                    src={image2}
+                                    alt="Image 1"
+                                />
+                                <div className="ui-overlay ui-bottom">
+                                    <div className="card-notification">
+                                        <div className="card-notification-title">Authenticate before you Buy</div>
+                                        <div className="card-notification-subtitle">Through our network of certified Watch Makers</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {/* Extra space for scrolling */}
-            <div className="finance-section">
-                <h2 className="finance-headline">Experience<br />the future of<br />finance.</h2>
-                <div className="finance-cards">
-                    <div className="finance-card">Invest</div>
-                    <div className="finance-card">Crypto</div>
-                    <div className="finance-card">Vaults</div>
-                </div>
             </div>
-        </div>
+            <LuxryFrame />
+        </>
     );
 };
 
