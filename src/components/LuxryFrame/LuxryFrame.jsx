@@ -1,4 +1,5 @@
 import './LuxryFrame.css';
+import { motion } from 'framer-motion';
 import mapVideo from '../../assets/images/map.mp4';
 import coinVideo from '../../assets/images/coin.mp4';
 import brandscoinVideo from '../../assets/images/brandscoin.mp4';
@@ -21,14 +22,41 @@ export const LuxryFrame = () => {
                         <div className="col-md-6 order-2 order-sm-2 order-md-1">
                             <div className="section-content animated wow fadeInLeft">
                                 <div className="sec-tag mb-5">
-                                    <span>Highest Prices</span>
+                                    <motion.span
+                                        initial={{ opacity: 0, y: 50, borderColor: "transparent" }}
+                                        whileInView={{ 
+                                            opacity: 1, 
+                                            y: 0,
+                                            borderColor: "#0290C4"
+                                        }}
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        transition={{ 
+                                            duration: 0.6, 
+                                            ease: "easeOut",
+                                            borderColor: { duration: 0.8, delay: 0.2 }
+                                        }}
+                                    >
+                                        Highest Prices
+                                    </motion.span>
                                 </div>
-                                <h1 className="mb-3">
+                                <motion.h1 
+                                    className="mb-3"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                                >
                                     Get the best price<br />
                                     from our Global<br />
                                     Dealer Network
-                                </h1>
-                                <div className="sec-pra">
+                                </motion.h1>
+                                <motion.div 
+                                    className="sec-pra"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                                >
                                     <p>
                                         We identify dealers specializing in your particular brand or model. All prices are fully transparent so you know exact market value for your watch before you trade
                                     </p>
@@ -38,7 +66,7 @@ export const LuxryFrame = () => {
                                     <p>
                                         You get instant cash with no hastles for shipping and transport, no matter where in the world the dealer may be
                                     </p>
-                                </div>
+                                </motion.div>
 
                             </div>
 
@@ -57,19 +85,46 @@ export const LuxryFrame = () => {
                         <div className="col-md-6 order-2 order-sm-2 order-md-2">
                             <div className="section-content animated wow fadeInRight">
                                 <div className="sec-tag mb-5">
-                                    <span>Instant Finance</span>
+                                    <motion.span
+                                        initial={{ opacity: 0, y: 50, borderColor: "transparent" }}
+                                        whileInView={{ 
+                                            opacity: 1, 
+                                            y: 0,
+                                            borderColor: "#0290C4"
+                                        }}
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        transition={{ 
+                                            duration: 0.6, 
+                                            ease: "easeOut",
+                                            borderColor: { duration: 0.8, delay: 0.2 }
+                                        }}
+                                    >
+                                        Instant Finance
+                                    </motion.span>
                                 </div>
-                                <h1 className="mb-3 text-primary">
+                                <motion.h1 
+                                    className="mb-3 text-primary"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                                >
                                     Get immediate <br />
                                     cash at the <br />
                                     highest, globally<br />
                                     traded prices.
-                                </h1>
-                                <div className="sec-pra">
+                                </motion.h1>
+                                <motion.div 
+                                    className="sec-pra"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                                >
                                     <p>
                                         Option to buy back your watch at a fixed future price while your watch is stored safely in a tamper-proof and fully insured high-security facility
                                     </p>
-                                </div>
+                                </motion.div>
 
                             </div>
 
@@ -86,13 +141,41 @@ export const LuxryFrame = () => {
                         <div className="col-md-6 order-2 order-sm-2 order-md-1">
                             <div className="section-content left-custom-padding animated wow fadeInLeft">
                                 <div className="sec-tag mb-5">
-                                    <span className="text-white">Secure Storage</span>
+                                    <motion.span
+                                        className="text-white"
+                                        initial={{ opacity: 0, y: 50, borderColor: "transparent" }}
+                                        whileInView={{ 
+                                            opacity: 1, 
+                                            y: 0,
+                                            borderColor: "#0290C4"
+                                        }}
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        transition={{ 
+                                            duration: 0.6, 
+                                            ease: "easeOut",
+                                            borderColor: { duration: 0.8, delay: 0.2 }
+                                        }}
+                                    >
+                                        Secure Storage
+                                    </motion.span>
                                 </div>
-                                <h1 className="mb-3 text-white">
+                                <motion.h1 
+                                    className="mb-3 text-white"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                                >
                                     Custody by<br/>
                                     TransGuard
-                                </h1>
-                                <div className="sec-pra">
+                                </motion.h1>
+                                <motion.div 
+                                    className="sec-pra"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                                >
                                     <p className="text-white">
                                         We've partnered with the best in the business! 
                                     </p>
@@ -102,7 +185,7 @@ export const LuxryFrame = () => {
                                     <p className="text-white">
                                         Your assets are not only insured and stored under the highest levels of security available in the country, your ownership is also assured via your unique Digital NFT (Non-fungible Token) stored on the blockchain and accessible only by you
                                     </p>
-                                </div>
+                                </motion.div>
 
                             </div>
 
@@ -117,10 +200,16 @@ export const LuxryFrame = () => {
 
                         <div className="col-md-12 mb-5">
                             <div className="section-content animated wow fadeInDown">
-                                <h1 className="mb-3 text-white text-center">
+                                <motion.h1 
+                                    className="mb-3 text-white text-center"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 0.6, ease: "easeOut" }}
+                                >
                                     Our global dealer network<br/>
                                     specilizes in the best luxury brands
-                                </h1>
+                                </motion.h1>
                             </div>
 
                         </div>
@@ -145,12 +234,40 @@ export const LuxryFrame = () => {
                         <div className="col-md-6 order-2 order-sm-2 order-md-1 ">
                             <div className="section-content green-section-content animated wow fadeInLeft">
                                 <div className="sec-tag mb-5">
-                                    <span className="px-5">Join our global dealer network</span>
+                                    <motion.span
+                                        className="px-5"
+                                        initial={{ opacity: 0, y: 50, borderColor: "transparent" }}
+                                        whileInView={{ 
+                                            opacity: 1, 
+                                            y: 0,
+                                            borderColor: "#388768"
+                                        }}
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        transition={{ 
+                                            duration: 0.6, 
+                                            ease: "easeOut",
+                                            borderColor: { duration: 0.8, delay: 0.2 }
+                                        }}
+                                    >
+                                        Join our global dealer network
+                                    </motion.span>
                                 </div>
-                                <h1 className="mb-3 text-white">
+                                <motion.h1 
+                                    className="mb-3 text-white"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                                >
                                     AuthenticShield <small>TM</small>
-                                </h1>
-                                <div className="sec-pra">
+                                </motion.h1>
+                                <motion.div 
+                                    className="sec-pra"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                                >
                                     <p className="text-white mb-0">
                                         Our trademark service that digitally confirms
                                     </p>
@@ -163,7 +280,7 @@ export const LuxryFrame = () => {
                                     <p className="text-white">
                                         All watches are inspected by a certified member of AIWS (Association of Independent Watch Specialists) and recorded on an immutable NFT (Non fungible token) for future reference, significantly enhancing the value of your watch
                                     </p>
-                                </div>
+                                </motion.div>
 
                             </div>
 

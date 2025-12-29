@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { motion } from 'framer-motion';
 import './RevolutHero.css';
 import heroImage from '../../assets/images/hero-background.jpg';
 import logoImage from '../../assets/images/logo.svg';
@@ -269,13 +270,35 @@ const RevolutHero = () => {
                     ></div>
 
                     <div className="description-text" ref={description}>
-                        <h1 className="hero-main-text">
+                        <motion.h1 
+                            className="hero-main-text"
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                        >
                             A safer, smarter way to{' '}
                             <span className="highlight-text">sell your watch for immediate cash</span>
                             {' '}at the highest prices… with options to buy back
-                        </h1>
-                        <p className="hero-sub-text">End-to-end Global Trading of Luxury Watches with guaranteed protection</p>
-                        <button className="cta-button">Learn More</button>
+                        </motion.h1>
+                        <motion.p 
+                            className="hero-sub-text"
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                        >
+                            End-to-end Global Trading of Luxury Watches with guaranteed protection
+                        </motion.p>
+                        <motion.button 
+                            className="cta-button"
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+                        >
+                            Learn More
+                        </motion.button>
                     </div>
 
                     <div className="animation-viewport">
