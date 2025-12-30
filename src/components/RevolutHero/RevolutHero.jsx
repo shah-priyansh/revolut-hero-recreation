@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -219,10 +220,10 @@ const RevolutHero = () => {
 
                         {/* Desktop Navigation Menu */}
                         <nav className="nav-menu">
-                            <a href="#" className="nav-link">Home</a>
+                            <Link to="/" className="nav-link">Home</Link>
                             <a href="#" className="nav-link">Services</a>
-                            <a href="#" className="nav-link">About Us</a>
-                            <a href="#" className="nav-link">Contact & Support</a>
+                            <Link to="/about" className="nav-link">About Us</Link>
+                            <Link to="/contact" className="nav-link">Contact & Support</Link>
                             <a href="#" className="nav-link">Download App</a>
                         </nav>
 
@@ -251,7 +252,7 @@ const RevolutHero = () => {
                         }}
                     >
                         <div className="mobile-menu-content">
-                            <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
+                            <Link to="/" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
                             <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
                             <div className="mobile-menu-logo">
                                 <img
@@ -260,8 +261,8 @@ const RevolutHero = () => {
                                     className="mobile-logo-image"
                                 />
                             </div>
-                            <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>About Us</a>
-                            <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact & Support</a>
+                            <Link to="/about" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link>
+                            <Link to="/contact" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact & Support</Link>
                             <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Download App</a>
                         </div>
                     </nav>
