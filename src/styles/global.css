@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Aeonik Pro Font Face */
 @font-face {
     font-family: "Aeonik Pro";
