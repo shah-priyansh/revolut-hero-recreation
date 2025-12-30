@@ -309,8 +309,8 @@ export const LuxryFrame = () => {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="top-footer text-center">
-                                <div className="footer-logo">
-                                    <img src={logoImg} className="img-fluid" alt="Logo"/>
+                                <div className="footer-logo text-center">
+                                    <img src={logoImg} className="img-fluid mx-auto d-block" alt="Logo"/>
                                 </div>
 
                                 <div className="footer-links my-5">

@@ -1496,6 +1496,141 @@ h1,h2,h3,h4,h5,h6 {
     cursor: pointer;
 }
 
+
+.page-content h1 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 100%;
+}
+.page-content p {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+}
+.page-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+.ready-content h1{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 100%;
+}
+.ready-content p{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+}
+.ready-btn-div p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.9);
+}
+.ready-btn-div .btn {
+    padding: 16px 25px;
+    background: #6BC8AC;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-size: 22px;
+    line-height: 28px;
+    color: #FFFFFF;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #374151;
+    margin-bottom: 5px;
+    display: block;
+}
+.form-group .form-control {
+    padding: 14px 16px;
+    background: #FFFFFF;
+    border: 2px solid #D1D5DB;
+    border-radius: 8px;
+}
+.form-group .form-control::placeholder {
+    color: #9CA3AF;
+}
+.form-btn-div .btn {
+    background-color: #6BC8AC;
+    display: block;
+    width: 100%;
+    color: #fff;
+    padding: 12px 0;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+}
+.cont-title h3 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #2D3748;
+    margin-bottom: 15px;
+}
+
+
+.icon-box {
+    width: 64px;
+    height: 64px;
+    background-color: #e7e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    flex: 0 0 64px;
+}
+.contact-box {
+    display: flex;
+    gap: 20px;
+}
+.contact-detail-box h4 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    color: #2D3748;
+    margin-bottom: 5px;
+}
+.contact-detail-box p {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #374151;
+}
+.contact-detail-box span {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #6B7280;
+}
+.custom-header .header {
+    position: relative;
+    background-color: #fff;
+    padding: 10px 0;
+}
+.custom-header .header .nav-menu {
+    gap: 10px;
+}
+.custom-header .header .nav-menu .nav-link {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    color: #000000;
+}
 /* Responsive Styles for Revolut Hero */
 @media screen and (max-width: 1654px) {
     .revolut-hero-image-main {
@@ -1559,6 +1694,12 @@ h1,h2,h3,h4,h5,h6 {
     .revolut-hero-image-overlay {
         transform: translate(-50%, 0) scale(1.2);
     }
+    .page-content h1 {
+        font-size: 48px;
+    }
+    .page-content p {
+        font-size: 18px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -1592,6 +1733,43 @@ h1,h2,h3,h4,h5,h6 {
     .revolut-hero-image-overlay {
         transform: translate(-50%, 0) scale(1);
     }
+
+
+    .ready-content h1{
+        font-size: 34px;
+    }
+    .ready-content p{
+        font-size: 18px;
+    }
+
+    .ready-btn-div .btn {
+        padding: 16px 20px;
+        font-size: 18px;
+    }
+
+
+    .form-group label {
+        font-size: 12px;
+    }
+
+    .form-btn-div .btn {
+        font-size: 16px;
+    }
+    .cont-title h3 {
+        font-size: 18px;
+    }
+
+
+    .contact-detail-box h4 {
+        font-size: 16px;
+    }
+    .contact-detail-box p {
+        font-size: 14px;
+    }
+    .contact-detail-box span {
+        font-size: 14px;
+    }
+
 }
 
 @media screen and (max-width: 576px) {
