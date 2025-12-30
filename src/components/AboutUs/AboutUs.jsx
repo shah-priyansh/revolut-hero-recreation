@@ -1,48 +1,138 @@
+import { motion } from 'framer-motion';
 import img3 from "../../assets/images/img3.png";
+import Header from '../Header/Header';
 
 export default function AboutUs() {
+    // Animation variants
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    const fadeInLeft = {
+        hidden: { opacity: 0, x: -50 },
+        visible: { 
+            opacity: 1, 
+            x: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    const fadeInRight = {
+        hidden: { opacity: 0, x: 50 },
+        visible: { 
+            opacity: 1, 
+            x: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    const scaleIn = {
+        hidden: { opacity: 0, scale: 0.8 },
+        visible: { 
+            opacity: 1, 
+            scale: 1,
+            transition: { duration: 0.5, ease: "easeOut" }
+        }
+    };
+
+    const staggerContainer = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2
+            }
+        }
+    };
+
+    const cardAnimation = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
     return (
         <div style={{ minHeight: '100vh' }}>
+            {/* Header */}
+            <Header />
+
             {/* Mission Section */}
-            <div className="bg-white">
+            <div className="bg-white" style={{ paddingTop: '120px' }}>
                 <div className="container-fluid px-3">
                     <div className="container" style={{ maxWidth: '85%' }}>
                         <div className="row align-items-center py-5 py-xl-5">
-                            <div className="col-12 col-md-6 mb-4 mb-md-0">
-                                <div>
+                            <motion.div 
+                                className="col-12 col-md-6 mb-4 mb-md-0"
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-100px" }}
+                                variants={fadeInLeft}
+                            >
+                                <motion.div
+                                    whileHover={{ scale: 1.02 }}
+                                    transition={{ duration: 0.3 }}
+                                >
                                     <video autoPlay muted loop className="w-100">
                                         <source src={'/images/map.mp4'}/>
                                     </video>
-                                </div>
-                            </div>
-                            <div className="col-12 col-md-6">
+                                </motion.div>
+                            </motion.div>
+                            <motion.div 
+                                className="col-12 col-md-6"
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-100px" }}
+                                variants={fadeInRight}
+                            >
                                 <div className="d-flex flex-column" style={{ gap: '1rem' }}>
-                                    <h1 className="display-1 fw-light text-black mb-3" style={{ 
-                                        fontSize: 'clamp(2rem, 5vw, 4.5rem)',
-                                        color: '#000000'
-                                    }}>
+                                    <motion.h1 
+                                        className="display-1 fw-light text-black mb-3" 
+                                        style={{ 
+                                            fontSize: 'clamp(2rem, 5vw, 4.5rem)',
+                                            color: '#000000'
+                                        }}
+                                        variants={fadeInUp}
+                                    >
                                         Our Mission
-                                    </h1>
-                                    <div className="d-flex flex-column" style={{ 
-                                        fontSize: 'clamp(1rem, 2vw, 1.5rem)',
-                                        gap: '1.5rem'
-                                    }}>
-                                        <p>
+                                    </motion.h1>
+                                    <motion.div 
+                                        className="d-flex flex-column" 
+                                        style={{ 
+                                            fontSize: 'clamp(1rem, 2vw, 1.5rem)',
+                                            gap: '1.5rem'
+                                        }}
+                                        variants={staggerContainer}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true }}
+                                    >
+                                        <motion.p variants={fadeInUp}>
                                             The luxury watch market has long been plagued by slow transactions, opaque
                                             pricing, and unnecessary risk. Traditional dealers take weeks to process sales, leaving
                                             sellers vulnerable and uncertain.
-                                        </p>
-                                        <p>
+                                        </motion.p>
+                                        <motion.p variants={fadeInUp}>
                                             iLock was founded to solve these problems through technology and trust.
                                             We've built a platform that combines instant liquidity with bank-grade security, giving
                                             collectors the confidence to trade their most valuable assets.
-                                        </p>
-                                        <p style={{ color: '#9CC2B8', fontSize: 'clamp(1.25rem, 2vw, 1.5rem)' }}>
+                                        </motion.p>
+                                        <motion.p 
+                                            style={{ color: '#9CC2B8', fontSize: 'clamp(1.25rem, 2vw, 1.5rem)' }}
+                                            variants={fadeInUp}
+                                        >
                                             Fast. Fair. Secure. That's the iLock promise.
-                                        </p>
-                                    </div>
+                                        </motion.p>
+                                    </motion.div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
@@ -53,23 +143,48 @@ export default function AboutUs() {
                 <div className="container-fluid px-3">
                     <div className="container" style={{ maxWidth: '85%' }}>
                         <div className="py-5 py-xl-5">
-                            <h2 className="display-1 fw-light text-center mb-5" style={{ 
-                                fontSize: 'clamp(2rem, 5vw, 4.5rem)',
-                                color: '#000000'
-                            }}>
+                            <motion.h2 
+                                className="display-1 fw-light text-center mb-5" 
+                                style={{ 
+                                    fontSize: 'clamp(2rem, 5vw, 4.5rem)',
+                                    color: '#000000'
+                                }}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-100px" }}
+                                variants={fadeInUp}
+                            >
                                 Our Core Pillars
-                            </h2>
-                            <div className="row g-3 g-lg-4">
-                                <div className="col-12 col-sm-6 col-lg-4 h-100">
-                                    <div className="bg-white rounded shadow h-100 p-4 p-xl-5" style={{ borderRadius: '1.5rem' }}>
-                                        <div className="d-flex justify-content-center align-items-center mb-3 mb-md-4" style={{
-                                            width: '105px',
-                                            height: '105px',
-                                            borderRadius: '50%',
-                                            backgroundColor: '#83D7F5'
-                                        }}>
+                            </motion.h2>
+                            <motion.div 
+                                className="row g-3 g-lg-4"
+                                variants={staggerContainer}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-50px" }}
+                            >
+                                <motion.div 
+                                    className="col-12 col-sm-6 col-lg-4 h-100"
+                                    variants={cardAnimation}
+                                >
+                                    <motion.div 
+                                        className="bg-white rounded shadow h-100 p-4 p-xl-5" 
+                                        style={{ borderRadius: '1.5rem' }}
+                                        whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                                    >
+                                        <motion.div 
+                                            className="d-flex justify-content-center align-items-center mb-3 mb-md-4" 
+                                            style={{
+                                                width: '105px',
+                                                height: '105px',
+                                                borderRadius: '50%',
+                                                backgroundColor: '#83D7F5'
+                                            }}
+                                            variants={scaleIn}
+                                            whileHover={{ rotate: 360, transition: { duration: 0.6 } }}
+                                        >
                                             <span className="fs-1 fw-bold">1</span>
-                                        </div>
+                                        </motion.div>
                                         <div>
                                             <h3 className="fw-semibold mb-3 mb-md-4" style={{ 
                                                 fontSize: 'clamp(1.25rem, 2vw, 2.25rem)'
@@ -82,18 +197,30 @@ export default function AboutUs() {
                                                 you receive the most competitive offers, anywhere in the world.
                                             </p>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-sm-6 col-lg-4 h-100">
-                                    <div className="bg-white rounded shadow h-100 p-4 p-xl-5" style={{ borderRadius: '1.5rem' }}>
-                                        <div className="d-flex justify-content-center align-items-center mb-3 mb-md-4" style={{
-                                            width: '105px',
-                                            height: '105px',
-                                            borderRadius: '50%',
-                                            backgroundColor: '#83D7F5'
-                                        }}>
+                                    </motion.div>
+                                </motion.div>
+                                <motion.div 
+                                    className="col-12 col-sm-6 col-lg-4 h-100"
+                                    variants={cardAnimation}
+                                >
+                                    <motion.div 
+                                        className="bg-white rounded shadow h-100 p-4 p-xl-5" 
+                                        style={{ borderRadius: '1.5rem' }}
+                                        whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                                    >
+                                        <motion.div 
+                                            className="d-flex justify-content-center align-items-center mb-3 mb-md-4" 
+                                            style={{
+                                                width: '105px',
+                                                height: '105px',
+                                                borderRadius: '50%',
+                                                backgroundColor: '#83D7F5'
+                                            }}
+                                            variants={scaleIn}
+                                            whileHover={{ rotate: 360, transition: { duration: 0.6 } }}
+                                        >
                                             <span className="fs-1 fw-bold">2</span>
-                                        </div>
+                                        </motion.div>
                                         <div>
                                             <h3 className="fw-semibold mb-3 mb-md-4" style={{ 
                                                 fontSize: 'clamp(1.25rem, 2vw, 2.25rem)'
@@ -106,18 +233,30 @@ export default function AboutUs() {
                                                 climate-controlled vaults with 24/7 monitoring and full insurance coverage.
                                             </p>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-sm-12 col-lg-4 h-100">
-                                    <div className="bg-white rounded shadow h-100 p-4 p-xl-5" style={{ borderRadius: '1.5rem' }}>
-                                        <div className="d-flex justify-content-center align-items-center mb-3 mb-md-4" style={{
-                                            width: '105px',
-                                            height: '105px',
-                                            borderRadius: '50%',
-                                            backgroundColor: '#83D7F5'
-                                        }}>
+                                    </motion.div>
+                                </motion.div>
+                                <motion.div 
+                                    className="col-12 col-sm-12 col-lg-4 h-100"
+                                    variants={cardAnimation}
+                                >
+                                    <motion.div 
+                                        className="bg-white rounded shadow h-100 p-4 p-xl-5" 
+                                        style={{ borderRadius: '1.5rem' }}
+                                        whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                                    >
+                                        <motion.div 
+                                            className="d-flex justify-content-center align-items-center mb-3 mb-md-4" 
+                                            style={{
+                                                width: '105px',
+                                                height: '105px',
+                                                borderRadius: '50%',
+                                                backgroundColor: '#83D7F5'
+                                            }}
+                                            variants={scaleIn}
+                                            whileHover={{ rotate: 360, transition: { duration: 0.6 } }}
+                                        >
                                             <span className="fs-1 fw-bold">3</span>
-                                        </div>
+                                        </motion.div>
                                         <div>
                                             <h3 className="fw-semibold mb-3 mb-md-4" style={{ 
                                                 fontSize: 'clamp(1.25rem, 2vw, 2.25rem)'
@@ -130,9 +269,9 @@ export default function AboutUs() {
                                                 offer within 24 hours and payment within 48 hours of acceptance.
                                             </p>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    </motion.div>
+                                </motion.div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
@@ -143,19 +282,50 @@ export default function AboutUs() {
                 <div className="container-fluid px-3">
                     <div className="container" style={{ maxWidth: '1240px' }}>
                         <div className="py-5 py-xl-5">
-                            <div className="mb-5 text-white text-center">
-                                <div style={{ fontSize: 'clamp(1.5rem, 3vw, 3.75rem)' }}>Build on a foundation of</div>
-                                <h2 className="display-1 fw-bold" style={{ 
-                                    fontSize: 'clamp(2rem, 5vw, 4.5rem)'
-                                }}>
+                            <motion.div 
+                                className="mb-5 text-white text-center"
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-100px" }}
+                                variants={staggerContainer}
+                            >
+                                <motion.div 
+                                    style={{ fontSize: 'clamp(1.5rem, 3vw, 3.75rem)' }}
+                                    variants={fadeInUp}
+                                >
+                                    Build on a foundation of
+                                </motion.div>
+                                <motion.h2 
+                                    className="display-1 fw-bold" 
+                                    style={{ 
+                                        fontSize: 'clamp(2rem, 5vw, 4.5rem)'
+                                    }}
+                                    variants={fadeInUp}
+                                >
                                     Trust & Expertise
-                                </h2>
-                            </div>
-                            <div className="row g-3 g-lg-4 align-items-center">
-                                <div className="col-12 col-md-6 h-100">
-                                    <div className="bg-white rounded shadow h-100 p-4 p-xl-5" style={{ borderRadius: '1.5rem' }}>
+                                </motion.h2>
+                            </motion.div>
+                            <motion.div 
+                                className="row g-3 g-lg-4 align-items-center"
+                                variants={staggerContainer}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-50px" }}
+                            >
+                                <motion.div 
+                                    className="col-12 col-md-6 h-100"
+                                    variants={cardAnimation}
+                                >
+                                    <motion.div 
+                                        className="bg-white rounded shadow h-100 p-4 p-xl-5" 
+                                        style={{ borderRadius: '1.5rem' }}
+                                        whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                                    >
                                         <div className="d-flex align-items-center mb-4" style={{ gap: '1rem' }}>
-                                            <div>
+                                            <motion.div
+                                                whileHover={{ scale: 1.1, rotate: 5 }}
+                                                transition={{ duration: 0.3 }}
+                                            >
                                                 <div className="d-flex justify-content-center align-items-center border border-2 rounded-circle" style={{
                                                     width: '90px',
                                                     height: '90px',
@@ -164,7 +334,7 @@ export default function AboutUs() {
                                                 }}>
                                                     <span className="fs-2 fw-bold">12</span>
                                                 </div>
-                                            </div>
+                                            </motion.div>
                                             <div className="d-flex flex-column">
                                                 <h4 className="fw-bold mb-0" style={{ 
                                                     fontSize: 'clamp(1.25rem, 2.5vw, 2.25rem)'
@@ -194,12 +364,22 @@ export default function AboutUs() {
                                                 built on cutting-edge infrastructure.
                                             </p>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-md-6 h-100">
-                                    <div className="bg-white rounded shadow h-100 p-4 p-xl-5" style={{ borderRadius: '1.5rem' }}>
+                                    </motion.div>
+                                </motion.div>
+                                <motion.div 
+                                    className="col-12 col-md-6 h-100"
+                                    variants={cardAnimation}
+                                >
+                                    <motion.div 
+                                        className="bg-white rounded shadow h-100 p-4 p-xl-5" 
+                                        style={{ borderRadius: '1.5rem' }}
+                                        whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                                    >
                                         <div className="d-flex align-items-center mb-4" style={{ gap: '1rem' }}>
-                                            <div>
+                                            <motion.div
+                                                whileHover={{ scale: 1.1, rotate: 5 }}
+                                                transition={{ duration: 0.3 }}
+                                            >
                                                 <div className="d-flex justify-content-center align-items-center border border-2 rounded-circle" style={{
                                                     width: '90px',
                                                     height: '90px',
@@ -208,7 +388,7 @@ export default function AboutUs() {
                                                 }}>
                                                     <span className="fs-2 fw-bold">12</span>
                                                 </div>
-                                            </div>
+                                            </motion.div>
                                             <div className="d-flex flex-column">
                                                 <h4 className="fw-bold mb-0" style={{ 
                                                     fontSize: 'clamp(1.25rem, 2.5vw, 2.25rem)'
@@ -238,9 +418,9 @@ export default function AboutUs() {
                                                 client assets like Fort Knox.
                                             </p>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    </motion.div>
+                                </motion.div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
@@ -250,36 +430,75 @@ export default function AboutUs() {
             <div style={{ backgroundColor: '#484C52' }}>
                 <div className="container-fluid">
                     <div className="row align-items-center g-0">
-                        <div className="col-12 col-md-6">
+                        <motion.div 
+                            className="col-12 col-md-6"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            variants={fadeInLeft}
+                        >
                             <div className="p-4 p-lg-5" style={{ paddingLeft: 'clamp(2.5rem, 10vw, 10rem)' }}>
-                                <div className="d-flex flex-column text-white mb-4" style={{ gap: '1rem' }}>
-                                    <h2 className="display-1 fw-light" style={{ 
-                                        fontSize: 'clamp(2rem, 5vw, 4.5rem)'
-                                    }}>
+                                <motion.div 
+                                    className="d-flex flex-column text-white mb-4" 
+                                    style={{ gap: '1rem' }}
+                                    variants={staggerContainer}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                >
+                                    <motion.h2 
+                                        className="display-1 fw-light" 
+                                        style={{ 
+                                            fontSize: 'clamp(2rem, 5vw, 4.5rem)'
+                                        }}
+                                        variants={fadeInUp}
+                                    >
                                         Security is<br/>
                                         our Obsession
-                                    </h2>
-                                    <div className="d-flex flex-column" style={{ 
-                                        fontSize: 'clamp(1rem, 1.5vw, 1.5rem)',
-                                        gap: '1.25rem'
-                                    }}>
+                                    </motion.h2>
+                                    <motion.div 
+                                        className="d-flex flex-column" 
+                                        style={{ 
+                                            fontSize: 'clamp(1rem, 1.5vw, 1.5rem)',
+                                            gap: '1.25rem'
+                                        }}
+                                        variants={fadeInUp}
+                                    >
                                         <p>
                                             When you trust us with your luxury timepieces, we take that responsibility
                                             seriously. Every watch is stored in state-of-the-art facilities with
                                             multiple layers of protection.
                                         </p>
-                                    </div>
-                                </div>
-                                <div className="row g-3">
-                                    <div className="col-12 col-lg-4">
-                                        <div className="d-flex flex-column text-white" style={{ gap: '0.5rem' }}>
-                                            <div className="d-flex justify-content-center align-items-center rounded-circle" style={{
-                                                width: '55px',
-                                                height: '55px',
-                                                backgroundColor: '#9CC2B8'
-                                            }}>
+                                    </motion.div>
+                                </motion.div>
+                                <motion.div 
+                                    className="row g-3"
+                                    variants={staggerContainer}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                >
+                                    <motion.div 
+                                        className="col-12 col-lg-4"
+                                        variants={cardAnimation}
+                                    >
+                                        <motion.div 
+                                            className="d-flex flex-column text-white" 
+                                            style={{ gap: '0.5rem' }}
+                                            whileHover={{ x: 10, transition: { duration: 0.3 } }}
+                                        >
+                                            <motion.div 
+                                                className="d-flex justify-content-center align-items-center rounded-circle" 
+                                                style={{
+                                                    width: '55px',
+                                                    height: '55px',
+                                                    backgroundColor: '#9CC2B8'
+                                                }}
+                                                variants={scaleIn}
+                                                whileHover={{ scale: 1.2, rotate: 360, transition: { duration: 0.5 } }}
+                                            >
                                                 <span className="fw-bold">1</span>
-                                            </div>
+                                            </motion.div>
                                             <h5 className="fw-semibold mb-0" style={{ 
                                                 fontSize: 'clamp(1rem, 1.5vw, 1.25rem)'
                                             }}>
@@ -290,17 +509,29 @@ export default function AboutUs() {
                                                 Industry-leading custody and insurance protocols backed by Lloyd's of
                                                 London.
                                             </p>
-                                        </div>
-                                    </div>
-                                    <div className="col-12 col-lg-4">
-                                        <div className="d-flex flex-column text-white" style={{ gap: '0.5rem' }}>
-                                            <div className="d-flex justify-content-center align-items-center rounded-circle" style={{
-                                                width: '55px',
-                                                height: '55px',
-                                                backgroundColor: '#9CC2B8'
-                                            }}>
+                                        </motion.div>
+                                    </motion.div>
+                                    <motion.div 
+                                        className="col-12 col-lg-4"
+                                        variants={cardAnimation}
+                                    >
+                                        <motion.div 
+                                            className="d-flex flex-column text-white" 
+                                            style={{ gap: '0.5rem' }}
+                                            whileHover={{ x: 10, transition: { duration: 0.3 } }}
+                                        >
+                                            <motion.div 
+                                                className="d-flex justify-content-center align-items-center rounded-circle" 
+                                                style={{
+                                                    width: '55px',
+                                                    height: '55px',
+                                                    backgroundColor: '#9CC2B8'
+                                                }}
+                                                variants={scaleIn}
+                                                whileHover={{ scale: 1.2, rotate: 360, transition: { duration: 0.5 } }}
+                                            >
                                                 <span className="fw-bold">2</span>
-                                            </div>
+                                            </motion.div>
                                             <h5 className="fw-semibold mb-0" style={{ 
                                                 fontSize: 'clamp(1rem, 1.5vw, 1.25rem)'
                                             }}>
@@ -309,19 +540,31 @@ export default function AboutUs() {
                                             </h5>
                                             <p className="small mb-0" style={{ fontSize: '0.875rem' }}>
                                                 Real-time monitoring with biometric access controls and redundant
-                                                security systems.
+                                                security                                                 systems.
                                             </p>
-                                        </div>
-                                    </div>
-                                    <div className="col-12 col-lg-4">
-                                        <div className="d-flex flex-column text-white" style={{ gap: '0.5rem' }}>
-                                            <div className="d-flex justify-content-center align-items-center rounded-circle" style={{
-                                                width: '55px',
-                                                height: '55px',
-                                                backgroundColor: '#9CC2B8'
-                                            }}>
+                                        </motion.div>
+                                    </motion.div>
+                                    <motion.div
+                                        className="col-12 col-lg-4"
+                                        variants={cardAnimation}
+                                    >
+                                        <motion.div 
+                                            className="d-flex flex-column text-white" 
+                                            style={{ gap: '0.5rem' }}
+                                            whileHover={{ x: 10, transition: { duration: 0.3 } }}
+                                        >
+                                            <motion.div 
+                                                className="d-flex justify-content-center align-items-center rounded-circle" 
+                                                style={{
+                                                    width: '55px',
+                                                    height: '55px',
+                                                    backgroundColor: '#9CC2B8'
+                                                }}
+                                                variants={scaleIn}
+                                                whileHover={{ scale: 1.2, rotate: 360, transition: { duration: 0.5 } }}
+                                            >
                                                 <span className="fw-bold">3</span>
-                                            </div>
+                                            </motion.div>
                                             <h5 className="fw-semibold mb-0" style={{ 
                                                 fontSize: 'clamp(1rem, 1.5vw, 1.25rem)'
                                             }}>
@@ -332,16 +575,25 @@ export default function AboutUs() {
                                                 Every asset is insured from the moment it enters our custody until final
                                                 delivery.
                                             </p>
-                                        </div>
-                                    </div>
-                                </div>
+                                        </motion.div>
+                                    </motion.div>
+                                </motion.div>
                             </div>
-                        </div>
-                        <div className="col-12 col-md-6">
-                            <div>
+                        </motion.div>
+                        <motion.div 
+                            className="col-12 col-md-6"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            variants={fadeInRight}
+                        >
+                            <motion.div
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.3 }}
+                            >
                                 <img src={img3} className="img-fluid w-100" style={{ objectFit: 'cover' }} alt="Security"/>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     </div>
                 </div>
             </div>

@@ -1,15 +1,14 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { motion } from 'framer-motion';
 import './RevolutHero.css';
 import heroImage from '../../assets/images/hero-background.jpg';
-import logoImage from '../../assets/images/logo.svg';
 import image1 from '../../assets/images/image-1.png';
 import image3 from '../../assets/images/image-3.png';
 import { LuxryFrame } from '../LuxryFrame/LuxryFrame';
+import Header from '../Header/Header';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,53 +20,6 @@ const RevolutHero = () => {
     const leftCard = useRef();
     const rightCard = useRef();
     const description = useRef();
-    const headerRef = useRef();
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-            if (scrollY > 100) {
-                setIsScrolled(true);
-                headerRef.current?.classList.add('scrolled');
-            } else {
-                setIsScrolled(false);
-                headerRef.current?.classList.remove('scrolled');
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    // Close mobile menu on window resize (if it becomes desktop)
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth > 768) {
-                setIsMobileMenuOpen(false);
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    // Close mobile menu when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (isMobileMenuOpen &&
-                headerRef.current &&
-                !headerRef.current.contains(event.target)) {
-                setIsMobileMenuOpen(false);
-            }
-        };
-
-        if (isMobileMenuOpen) {
-            document.addEventListener('mousedown', handleClickOutside);
-            return () => document.removeEventListener('mousedown', handleClickOutside);
-        }
-    }, [isMobileMenuOpen]);
 
     // Set initial states for mobile (no animations)
     useEffect(() => {
@@ -207,66 +159,7 @@ const RevolutHero = () => {
     return (
         <>
             <div className="hero-wrapper" ref={container}>
-                <header className="header" ref={headerRef}>
-                    <div className="header-content">
-                        {/* Logo and Brand */}
-                        <div className="logo-section">
-                            <img
-                                src={logoImage}
-                                alt="iLock Logo"
-                                className="logo-image"
-                            />
-                        </div>
-
-                        {/* Desktop Navigation Menu */}
-                        <nav className="nav-menu">
-                            <Link to="/" className="nav-link">Home</Link>
-                            <a href="#" className="nav-link">Services</a>
-                            <Link to="/about" className="nav-link">About Us</Link>
-                            <Link to="/contact" className="nav-link">Contact & Support</Link>
-                            <a href="#" className="nav-link">Download App</a>
-                        </nav>
-
-                        {/* Mobile Menu Button */}
-                        <button
-                            className="mobile-menu-button"
-                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            aria-label="Toggle menu"
-                        >
-                            <span className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </span>
-                        </button>
-                    </div>
-
-                    {/* Mobile Navigation Menu */}
-                    <nav 
-                        className={`mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}
-                        onClick={(e) => {
-                            // Close menu when clicking on backdrop
-                            if (e.target === e.currentTarget) {
-                                setIsMobileMenuOpen(false);
-                            }
-                        }}
-                    >
-                        <div className="mobile-menu-content">
-                            <Link to="/" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-                            <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
-                            <div className="mobile-menu-logo">
-                                <img
-                                    src={logoImage}
-                                    alt="iLock Logo"
-                                    className="mobile-logo-image"
-                                />
-                            </div>
-                            <Link to="/about" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link>
-                            <Link to="/contact" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact & Support</Link>
-                            <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Download App</a>
-                        </div>
-                    </nav>
-                </header>
+                <Header />
                 <div className="sticky-container">
                     {/* Layer 1: Base background (Solid White) */}
                     <div className="background-base"></div>

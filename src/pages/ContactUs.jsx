@@ -1,6 +1,9 @@
+import Header from '../components/Header/Header';
+
 export default function ContactUs() {
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white" style={{ paddingTop: '120px' }}>
+            <Header />
             <div className="w-[100%] sm:w-[100%] md:w-[100%] lg:w-[100%] xl:w-[85%] mx-auto py-10 xl:py-32 px-3">
                 <div className="text-center mb-12">
                     <h1 className="text-4xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-7xl text-[#000000] font-light mb-4">
