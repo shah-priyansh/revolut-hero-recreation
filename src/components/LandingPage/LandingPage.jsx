@@ -91,11 +91,11 @@ export default function LandingPage() {
             <div className={'landing-form-div py-5'}
                  style={{backgroundImage: `url('/src/assets/images/landing-img.png')`}}
             >
-                <div className={'container'}>
+                <div className={'container py-5'}>
                     <div className={'row'}>
                         <div className={'col-md-6 col-lg-6 col-xl-7'}>
                             <div className={'lf-left text-white mb-5 mb-sm-5 mb-md-0'}>
-                                <div className={'landing-logo mb-3 mb-md-5'}>
+                                <div className={'landing-logo mb-3 mb-md-5 mt-[-60px]'}>
                                     <img src={'/src/assets/images/logo.svg'} alt={'img'} width={'250'}
                                          className={'img-fluid'}/>
                                 </div>

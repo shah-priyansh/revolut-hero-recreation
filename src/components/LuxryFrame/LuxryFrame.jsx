@@ -225,7 +225,7 @@ export const LuxryFrame = () => {
 
                         </div>
                         <div className="col-md-12 text-center">
-                            <video className="img-fluid animated wow zoomIn" autoPlay muted loop playsInline>
+                            <video className="img-fluid animated wow zoomIn mx-auto" autoPlay muted loop playsInline>
                                 <source src={brandscoinVideo} type="video/mp4"/>
                             </video>
                         </div>
@@ -239,7 +239,7 @@ export const LuxryFrame = () => {
                         <div
                             className="col-md-6 order-1 order-sm-1 order-md-2 mb-5 mb-sm-5 mb-md-0 animated wow fadeInRight">
                             <div className="text-end mb-5">
-                                <img src={authenticImg} className="img-fluid" alt="Authentic"/>
+                                <img src={authenticImg} className="img-fluid ms-auto" alt="Authentic"/>
                             </div>
                             <img src={img5} className="img-fluid w-100" alt="Join Network"/>
                         </div>

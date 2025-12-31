@@ -39,12 +39,12 @@ const Accordion = () => {
             {questions.map((item, index) => (
                 <div key={index} className="accordion-item">
                     <button
-                        className={`accordion-button ${openIndex === index ? 'active' : ''}`}
+                        className={`accordion-button bg-white rounded-[12px] ${openIndex === index ? 'active' : ''}`}
                         onClick={() => toggleQuestion(index)}
                         aria-expanded={openIndex === index}
                     >
                         <span className="accordion-question">{item.question}</span>
-                        <span className={`accordion-icon ${openIndex === index ? 'open' : ''}`}>
+                        <span className={`accordion-icon bg-transparent ${openIndex === index ? 'open' : ''}`}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 {openIndex === index ? (
                                     <path d="M5 12H19" stroke="#6BC8AC" strokeWidth="2" strokeLinecap="round"/>
