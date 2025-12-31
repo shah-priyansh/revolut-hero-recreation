@@ -54,7 +54,7 @@ const Header = () => {
             <div className="header-content">
                 {/* Logo and Brand */}
                 <div className="logo-section">
-                    <Link to="/">
+                    <Link to="/home">
                         <img
                             src={logoImage}
                             alt="iLock Logo"
@@ -65,7 +65,7 @@ const Header = () => {
 
                 {/* Desktop Navigation Menu */}
                 <nav className="nav-menu">
-                    <Link to="/" className="nav-link">Home</Link>
+                    <Link to="/home" className="nav-link">Home</Link>
                     <a href="#" className="nav-link">Services</a>
                     <Link to="/about" className="nav-link">About Us</Link>
                     <Link to="/contact" className="nav-link">Contact & Support</Link>
