@@ -1,6 +1,7 @@
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import React, { useState } from "react";
+import { motion } from 'framer-motion';
 import './ContactUs.css';
 
 // Accordion Component
@@ -69,6 +70,62 @@ const Accordion = () => {
 };
 
 export default function ContactUs() {
+    // Animation variants
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    const fadeInLeft = {
+        hidden: { opacity: 0, x: -50 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    const fadeInRight = {
+        hidden: { opacity: 0, x: 50 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    const scaleIn = {
+        hidden: { opacity: 0, scale: 0.8 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: { duration: 0.5, ease: "easeOut" }
+        }
+    };
+
+    const staggerContainer = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15
+            }
+        }
+    };
+
+    const cardAnimation = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.5, ease: "easeOut" }
+        }
+    };
+
     return (
         <div className="min-h-screen bg-white">
 
@@ -278,72 +335,140 @@ export default function ContactUs() {
             <div className={'custom-header'}>
                 <Header/>
             </div>
-            <div className={'page-banner position-relative'}>
+            <motion.div 
+                className={'page-banner position-relative'}
+                initial="hidden"
+                animate="visible"
+                variants={fadeInUp}
+            >
                 <img src={'src/assets/images/contact-banner.png'} className={'img-fluid'}/>
-                <div className={'page-content text-center text-white'}>
-                    <h1>
+                <motion.div 
+                    className={'page-content text-center text-white'}
+                    variants={staggerContainer}
+                    initial="hidden"
+                    animate="visible"
+                >
+                    <motion.h1 variants={fadeInUp}>
                         How can our concierge<br/> team assist you?
-                    </h1>
-                    <p>
+                    </motion.h1>
+                    <motion.p variants={fadeInUp}>
                         Whether you have questions about the process or need help with an existing<br/>
                         valuation, we are here to provide personalized support.
-                    </p>
-                </div>
-            </div>
+                    </motion.p>
+                </motion.div>
+            </motion.div>
 
             <div className={' bg-[#f9f9f9] py-5'}>
                 <div className={'contact-div'}>
                     <div className={'container'}>
                         <div className={'row'}>
-                            <div className={'col-md-7 col-lg-7 col-xl-8'}>
+                            <motion.div 
+                                className={'col-md-7 col-lg-7 col-xl-8'}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-100px" }}
+                                variants={fadeInLeft}
+                            >
                                 <div className={'contact-form'}>
-                                    <div className={'cont-title'}>
+                                    <motion.div 
+                                        className={'cont-title'}
+                                        variants={fadeInUp}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true }}
+                                    >
                                         <h3>Send us a Message</h3>
-                                    </div>
-                                    <form>
-                                        <div className={'mb-4 form-group'}>
+                                    </motion.div>
+                                    <motion.form
+                                        variants={staggerContainer}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true }}
+                                    >
+                                        <motion.div 
+                                            className={'mb-4 form-group'}
+                                            variants={cardAnimation}
+                                        >
                                             <label>Full Name</label>
                                             <input
                                                 type={'text'}
                                                 className="form-control"
                                                 placeholder="Enter your full name"
                                             />
-                                        </div>
-                                        <div className={'mb-4 form-group'}>
+                                        </motion.div>
+                                        <motion.div 
+                                            className={'mb-4 form-group'}
+                                            variants={cardAnimation}
+                                        >
                                             <label>Email Address</label>
                                             <input
                                                 type={'email'}
                                                 className="form-control"
                                                 placeholder="your.email@example.com"
                                             />
-                                        </div>
-                                        <div className={'mb-4 form-group'}>
-                                            <label>Email Address</label>
+                                        </motion.div>
+                                        <motion.div 
+                                            className={'mb-4 form-group'}
+                                            variants={cardAnimation}
+                                        >
+                                            <label>Subject</label>
                                             <select className={'form-control'}>
                                                 <option>General Question</option>
                                             </select>
-                                        </div>
-                                        <div className={'mb-4 form-group'}>
-                                            <label>Email Address</label>
+                                        </motion.div>
+                                        <motion.div 
+                                            className={'mb-4 form-group'}
+                                            variants={cardAnimation}
+                                        >
+                                            <label>Message</label>
                                             <textarea className={'form-control'} rows={'4'}
                                                       placeholder={'Tell us how we can help...'}>
 
                                             </textarea>
-                                        </div>
-                                        <div className={'mb-4 form-btn-div'}>
-                                            <button className={'btn'}>
+                                        </motion.div>
+                                        <motion.div 
+                                            className={'mb-4 form-btn-div'}
+                                            variants={cardAnimation}
+                                        >
+                                            <motion.button 
+                                                className={'btn'}
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                            >
                                                 Send Request
-                                            </button>
-                                        </div>
-                                    </form>
+                                            </motion.button>
+                                        </motion.div>
+                                    </motion.form>
                                 </div>
-                            </div>
-                            <div className={'col-md-5 col-lg-5 col-xl-4'}>
-                                <div className={'cont-title'}>
+                            </motion.div>
+                            <motion.div 
+                                className={'col-md-5 col-lg-5 col-xl-4'}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-100px" }}
+                                variants={fadeInRight}
+                            >
+                                <motion.div 
+                                    className={'cont-title'}
+                                    variants={fadeInUp}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                >
                                     <h3>Direct Channels</h3>
-                                </div>
-                                <div className={'contact-detail-div'}>
-                                    <div className={'contact-box mb-5'}>
+                                </motion.div>
+                                <motion.div 
+                                    className={'contact-detail-div'}
+                                    variants={staggerContainer}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                >
+                                    <motion.div 
+                                        className={'contact-box mb-5'}
+                                        variants={cardAnimation}
+                                        whileHover={{ x: 10, transition: { duration: 0.3 } }}
+                                    >
                                         <div className={'icon-box'}>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -357,9 +482,13 @@ export default function ContactUs() {
                                             <p>+971 4 123 4567</p>
                                             <span>Monday - Friday, 9am - 6pm (GMT+4)</span>
                                         </div>
-                                    </div>
+                                    </motion.div>
 
-                                    <div className={'contact-box mb-5'}>
+                                    <motion.div 
+                                        className={'contact-box mb-5'}
+                                        variants={cardAnimation}
+                                        whileHover={{ x: 10, transition: { duration: 0.3 } }}
+                                    >
                                         <div className={'icon-box'}>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -374,9 +503,13 @@ export default function ContactUs() {
                                             <p>concierge@ilock.com</p>
                                             <span>We respond within 24 hours</span>
                                         </div>
-                                    </div>
+                                    </motion.div>
 
-                                    <div className={'contact-box mb-5'}>
+                                    <motion.div 
+                                        className={'contact-box mb-5'}
+                                        variants={cardAnimation}
+                                        whileHover={{ x: 10, transition: { duration: 0.3 } }}
+                                    >
                                         <div className={'icon-box'}>
                                             <svg width="18" height="24" viewBox="0 0 18 24" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -390,9 +523,13 @@ export default function ContactUs() {
                                             <p>Dubai International Financial Centre</p>
                                             <span>DIFC, Dubai, United Arab Emirates</span>
                                         </div>
-                                    </div>
+                                    </motion.div>
 
-                                    <div className={'contact-box mb-5'}>
+                                    <motion.div 
+                                        className={'contact-box mb-5'}
+                                        variants={cardAnimation}
+                                        whileHover={{ x: 10, transition: { duration: 0.3 } }}
+                                    >
                                         <div className={'icon-box'}>
                                             <svg width="21" height="24" viewBox="0 0 21 24" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -407,51 +544,95 @@ export default function ContactUs() {
                                             <p>+971 50 123 4567</p>
                                             <span>Instant messaging available</span>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    </motion.div>
+                                </motion.div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
-                <div className={'container py-5'}>
+                <motion.div 
+                    className={'container py-5'}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                >
                     <hr className={'border-black border-b-1'}/>
-                </div>
+                </motion.div>
 
                 <div className={'question-div'}>
                     <div className={'container'}>
-                        <div className={'ready-content mb-5'}>
+                        <motion.div 
+                            className={'ready-content mb-5'}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            variants={fadeInUp}
+                        >
                             <h1 className={'mb-3 text-center'}>
                                 Common Questions
                             </h1>
-                        </div>
+                        </motion.div>
 
-                        <div className={'accordion-div'}>
+                        <motion.div 
+                            className={'accordion-div'}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-50px" }}
+                            variants={fadeInUp}
+                            transition={{ delay: 0.2 }}
+                        >
                             <Accordion />
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
 
 
             </div>
 
-            <div className={'ready-section py-5 py-md-5 my-md-5 text-center'}>
+            <motion.div 
+                className={'ready-section py-5 py-md-5 my-md-5 text-center'}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeInUp}
+            >
                 <div className={'container'}>
-                    <div className={'ready-content mb-5'}>
-                        <h1 className={'mb-3'}>
+                    <motion.div 
+                        className={'ready-content mb-5'}
+                        variants={staggerContainer}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        <motion.h1 
+                            className={'mb-3'}
+                            variants={fadeInUp}
+                        >
                             Ready to get your cash offer?
-                        </h1>
-                        <p>
+                        </motion.h1>
+                        <motion.p variants={fadeInUp}>
                             Join thousands of satisfied sellers who got the best price for their luxury timepieces
-                        </p>
-                    </div>
-                    <div className={'ready-btn-div text-center'}>
-                        <button className={'btn mb-3'}>
+                        </motion.p>
+                    </motion.div>
+                    <motion.div 
+                        className={'ready-btn-div text-center'}
+                        variants={fadeInUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        <motion.button 
+                            className={'btn mb-3'}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
                             Get your free valuation now
-                        </button>
+                        </motion.button>
                         <p>100% Secured & Confidential</p>
-                    </div>
+                    </motion.div>
                 </div>
-            </div>
+            </motion.div>
 
             <Footer />
         </div>

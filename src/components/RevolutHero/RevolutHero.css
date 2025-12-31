@@ -417,7 +417,7 @@ body {
   width: 120%;
   height: 120%;
   top: -10%;
-  left: -10%;
+  /* left: -10%; */
   object-fit: cover;
   transform-origin: center center;
 }

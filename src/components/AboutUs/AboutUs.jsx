@@ -67,28 +67,47 @@ export default function AboutUs() {
                 <Header/>
             </div>
 
-            <div className={'page-banner position-relative'}>
+            <motion.div 
+                className={'page-banner position-relative'}
+                initial="hidden"
+                animate="visible"
+                variants={fadeInUp}
+            >
                 <img src={'src/assets/images/about-banner.png'} className={'img-fluid'}/>
-                <div className={'page-content text-center text-white'}>
-                    <h1>
+                <motion.div 
+                    className={'page-content text-center text-white'}
+                    variants={staggerContainer}
+                    initial="hidden"
+                    animate="visible"
+                >
+                    <motion.h1 variants={fadeInUp}>
                         Redefining how the world<br/>
                         trades luxury timepieces
-                    </h1>
-                    <p>
+                    </motion.h1>
+                    <motion.p variants={fadeInUp}>
                         Combining advanced re-commerce technology with legacy wealth expertise
-                    </p>
-                </div>
-            </div>
+                    </motion.p>
+                </motion.div>
+            </motion.div>
 
             {/* Mission Section */}
             <div className="bg-white py-5">
                 <div className="container">
                     <div className="row align-items-center py-5 py-xl-5">
-                        <div
+                        <motion.div
                             className="col-12 col-md-6 mb-4 mb-md-0"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            variants={fadeInLeft}
                         >
-                            <img src={'src/assets/images/our-mission.png'} className={'img-fluid'}/>
-                        </div>
+                            <motion.img 
+                                src={'src/assets/images/our-mission.png'} 
+                                className={'img-fluid'}
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.3 }}
+                            />
+                        </motion.div>
                         <motion.div
                             className="col-12 col-md-6"
                             initial="hidden"
@@ -727,25 +746,50 @@ export default function AboutUs() {
             </div>
 
 
-            <div className={'ready-section py-5 py-md-5 my-md-5 text-center'}>
+            <motion.div 
+                className={'ready-section py-5 py-md-5 my-md-5 text-center'}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeInUp}
+            >
                 <div className={'container'}>
-                    <div className={'ready-content mb-5'}>
-                        <h1 className={'mb-3'}>
+                    <motion.div 
+                        className={'ready-content mb-5'}
+                        variants={staggerContainer}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        <motion.h1 
+                            className={'mb-3'}
+                            variants={fadeInUp}
+                        >
                             Redefining how the world<br/>
                             trades luxury timepieces
-                        </h1>
-                        <p>
+                        </motion.h1>
+                        <motion.p variants={fadeInUp}>
                             Combining advanced re-commerce technology with legacy wealth expertise
-                        </p>
-                    </div>
-                    <div className={'ready-btn-div text-center'}>
-                        <button className={'btn mb-3'}>
+                        </motion.p>
+                    </motion.div>
+                    <motion.div 
+                        className={'ready-btn-div text-center'}
+                        variants={fadeInUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        <motion.button 
+                            className={'btn mb-3'}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
                             Get your free valuation now
-                        </button>
+                        </motion.button>
                         <p>100% Secured & Confidential</p>
-                    </div>
+                    </motion.div>
                 </div>
-            </div>
+            </motion.div>
 
             <Footer />
         </div>
