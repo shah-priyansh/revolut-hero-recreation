@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import React, { useState } from 'react';
 import brandscoinVideo from '../../assets/images/brandscoin.mp4';
 import img4 from '../../assets/images/custody2.png';
+import landingImg from '../../assets/images/landing-img.png';
+import logoImg from '../../assets/images/logo.svg';
+import expertAuthImg from '../../assets/images/expert-auth.png';
 import './LandingPage.css';
 import Footer from "../Footer/Footer";
 
@@ -90,7 +93,7 @@ export default function LandingPage() {
         <div className="landing-page">
 
             <div className={'landing-form-div py-5'}
-                 style={{backgroundImage: `url('/src/assets/images/landing-img.png')`}}
+                 style={{backgroundImage: `url(${landingImg})`}}
             >
                 <div className={'container py-5'}>
                     <div className={'row'}>
@@ -102,7 +105,7 @@ export default function LandingPage() {
                                     animate="visible"
                                     variants={fadeInUp}
                                 >
-                                    <img src={'/src/assets/images/logo.svg'} alt={'img'} width={'250'}
+                                    <img src={logoImg} alt={'img'} width={'250'}
                                          className={'img-fluid'}/>
                                 </motion.div>
                                 <motion.div 
@@ -890,7 +893,7 @@ export default function LandingPage() {
                                 whileHover={{scale: 1.05}}
                                 transition={{duration: 0.3}}
                             >
-                                <img src={'src/assets/images/expert-auth.png'} className="img-fluid w-100"
+                                <img src={expertAuthImg} className="img-fluid w-100"
                                      style={{objectFit: 'cover'}}
                                      alt="Security"/>
                             </motion.div>

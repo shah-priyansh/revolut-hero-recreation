@@ -1,5 +1,10 @@
 import { motion } from 'framer-motion';
 import img3 from "../../assets/images/img3.png";
+import aboutBanner from "../../assets/images/about-banner.png";
+import ourMissionImg from "../../assets/images/our-mission.png";
+import pishuImg from "../../assets/images/pishu.png";
+import harshImg from "../../assets/images/harsh.png";
+import securityImg from "../../assets/images/securty.png";
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
@@ -73,7 +78,7 @@ export default function AboutUs() {
                 animate="visible"
                 variants={fadeInUp}
             >
-                <img src={'src/assets/images/about-banner.png'} className={'img-fluid'}/>
+                <img src={aboutBanner} className={'img-fluid'} alt="About Banner"/>
                 <motion.div 
                     className={'page-content text-center text-white'}
                     variants={staggerContainer}
@@ -102,8 +107,9 @@ export default function AboutUs() {
                             variants={fadeInLeft}
                         >
                             <motion.img 
-                                src={'src/assets/images/our-mission.png'} 
+                                src={ourMissionImg} 
                                 className={'img-fluid'}
+                                alt="Our Mission"
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ duration: 0.3 }}
                             />
@@ -415,7 +421,7 @@ export default function AboutUs() {
                                                         backgroundColor: '#83D7F5'
                                                     }}>
                                                     <span className="fs-2 fw-bold">
-                                                        <img src={'/src/assets/images/pishu.png'} alt={'img'} className={'w-full h-full object-cover rounded-full'}/>
+                                                        <img src={pishuImg} alt={'Pishu Uttam Ganglani'} className={'w-full h-full object-cover rounded-full'}/>
                                                     </span>
                                                 </div>
                                             </motion.div>
@@ -477,7 +483,7 @@ export default function AboutUs() {
                                                         backgroundColor: '#83D7F5'
                                                     }}>
                                                     <span className="fs-2 fw-bold">
-                                                        <img src={'/src/assets/images/harsh.png'} alt={'img'}
+                                                        <img src={harshImg} alt={'Harsh Kamani'}
                                                              className={'w-full h-full object-cover rounded-full'}/>
                                                     </span>
                                                 </div>
@@ -737,7 +743,7 @@ export default function AboutUs() {
                                 whileHover={{scale: 1.05}}
                                 transition={{duration: 0.3}}
                             >
-                                <img src={'src/assets/images/securty.png'} className="img-fluid w-100" style={{objectFit: 'cover'}}
+                                <img src={securityImg} className="img-fluid w-100" style={{objectFit: 'cover'}}
                                      alt="Security"/>
                             </motion.div>
                         </motion.div>
