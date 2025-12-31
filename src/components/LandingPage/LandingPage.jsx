@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import './LandingPage.css';
 import heroBackground from '../../assets/images/hero-background.jpg';
 import logoImg from '../../assets/images/logo.svg';

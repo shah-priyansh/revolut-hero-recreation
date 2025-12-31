@@ -1,4 +1,5 @@
 import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import React from "react";
 
 export default function ContactUs() {
@@ -387,7 +388,7 @@ export default function ContactUs() {
                 </div>
             </div>
 
-
+            <Footer />
         </div>
 
     );

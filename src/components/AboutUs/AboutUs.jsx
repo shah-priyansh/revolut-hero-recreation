@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import img3 from "../../assets/images/img3.png";
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 export default function AboutUs() {
     // Animation variants
@@ -746,6 +747,7 @@ export default function AboutUs() {
                 </div>
             </div>
 
+            <Footer />
         </div>
     );
 }
