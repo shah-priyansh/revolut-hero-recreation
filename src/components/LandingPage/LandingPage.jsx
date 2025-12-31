@@ -96,11 +96,22 @@ export default function LandingPage() {
                     <div className={'row'}>
                         <div className={'col-md-6 col-lg-6 col-xl-7'}>
                             <div className={'lf-left text-white mb-5 mb-sm-5 mb-md-0'}>
-                                <div className={'landing-logo mb-3 mb-md-5 mt-[-60px]'}>
+                                <motion.div 
+                                    className={'landing-logo mb-3 mb-md-5 mt-[-60px]'}
+                                    initial="hidden"
+                                    animate="visible"
+                                    variants={fadeInUp}
+                                >
                                     <img src={'/src/assets/images/logo.svg'} alt={'img'} width={'250'}
                                          className={'img-fluid'}/>
-                                </div>
-                                <div className={'lf-content mb-3 mb-md-5'}>
+                                </motion.div>
+                                <motion.div 
+                                    className={'lf-content mb-3 mb-md-5'}
+                                    initial="hidden"
+                                    animate="visible"
+                                    variants={fadeInUp}
+                                    transition={{ delay: 0.2 }}
+                                >
                                     <h1 className={'mb-3'}>
                                         Sell Your Luxury<br/>
                                         Watch for<br/>
@@ -110,11 +121,19 @@ export default function LandingPage() {
                                         Highest market prices guaranteed. Safe custody
                                         by TransGuard.
                                     </p>
-                                </div>
+                                </motion.div>
 
-                                <div className={'lf-points-div mt-3'}>
+                                <motion.div 
+                                    className={'lf-points-div mt-3'}
+                                    variants={staggerContainer}
+                                    initial="hidden"
+                                    animate="visible"
+                                >
                                     <div className={'row'}>
-                                        <div className={'col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 mb-3'}>
+                                        <motion.div 
+                                            className={'col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 mb-3'}
+                                            variants={cardAnimation}
+                                        >
                                             <div className={'lfp-box'}>
                                                 <div>
                                                     <svg width="56" height="56" viewBox="0 0 56 56" fill="none"
@@ -136,8 +155,11 @@ export default function LandingPage() {
                                                     international exchanges
                                                 </p>
                                             </div>
-                                        </div>
-                                        <div className={'col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 mb-3'}>
+                                        </motion.div>
+                                        <motion.div 
+                                            className={'col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 mb-3'}
+                                            variants={cardAnimation}
+                                        >
                                             <div className={'lfp-box'}>
                                                 <div>
                                                     <svg width="56" height="56" viewBox="0 0 56 56" fill="none"
@@ -162,8 +184,11 @@ export default function LandingPage() {
                                                     authentication
                                                 </p>
                                             </div>
-                                        </div>
-                                        <div className={'col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 mb-3'}>
+                                        </motion.div>
+                                        <motion.div 
+                                            className={'col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 mb-3'}
+                                            variants={cardAnimation}
+                                        >
                                             <div className={'lfp-box'}>
                                                 <div>
                                                     <svg width="56" height="56" viewBox="0 0 56 56" fill="none"
@@ -186,13 +211,20 @@ export default function LandingPage() {
                                                     services
                                                 </p>
                                             </div>
-                                        </div>
+                                        </motion.div>
                                     </div>
-                                </div>
+                                </motion.div>
 
                             </div>
                         </div>
-                        <div className={'col-md-6 col-lg-6 col-xl-5'}>
+                        <motion.div 
+                            className={'col-md-6 col-lg-6 col-xl-5'}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            variants={fadeInRight}
+                            transition={{ delay: 0.3 }}
+                        >
                             <div className={'landing-form'}>
                                 <div className={'lf-head text-center mb-4'}>
                                     <h4>Get Your Free Valuation</h4>
@@ -263,20 +295,38 @@ export default function LandingPage() {
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>
 
             <div className={'howit py-5 my-md-5'}>
                 <div className={'container'}>
-                    <div className="ready-content text-center mb-5">
+                    <motion.div 
+                        className="ready-content text-center mb-5"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        variants={fadeInUp}
+                    >
                         <h1 className="mb-3">How It Works</h1>
                         <p>Get paid in 3 simple steps</p>
-                    </div>
-                    <div className={'row text-black'}>
-                        <div className={'col-sm-4 col-md-4 mb-4 mb-sm-4 mb-md-0'}>
-                            <div className={'howit-box text-center'}>
+                    </motion.div>
+                    <motion.div 
+                        className={'row text-black'}
+                        variants={staggerContainer}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                    >
+                        <motion.div 
+                            className={'col-sm-4 col-md-4 mb-4 mb-sm-4 mb-md-0'}
+                            variants={cardAnimation}
+                        >
+                            <motion.div 
+                                className={'howit-box text-center'}
+                                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                            >
                                 <div className={'hi-icon mx-auto mb-4'}>
                                     <svg width="50" height="42" viewBox="0 0 50 42" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -290,10 +340,16 @@ export default function LandingPage() {
                                     Enter your watch information and
                                     upload photos for accurate valuation
                                 </p>
-                            </div>
-                        </div>
-                        <div className={'col-sm-4 col-md-4 mb-4 mb-sm-4 mb-md-0'}>
-                            <div className={'howit-box text-center'}>
+                            </motion.div>
+                        </motion.div>
+                        <motion.div 
+                            className={'col-sm-4 col-md-4 mb-4 mb-sm-4 mb-md-0'}
+                            variants={cardAnimation}
+                        >
+                            <motion.div 
+                                className={'howit-box text-center'}
+                                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                            >
                                 <div className={'hi-icon mx-auto mb-4'}>
                                     <svg width="56" height="56" viewBox="0 0 56 56" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -309,10 +365,16 @@ export default function LandingPage() {
                                     Receive highest global market price
                                     within minutes of submission
                                 </p>
-                            </div>
-                        </div>
-                        <div className={'col-sm-4 col-md-4 mb-4 mb-sm-4 mb-md-0'}>
-                            <div className={'howit-box text-center'}>
+                            </motion.div>
+                        </motion.div>
+                        <motion.div 
+                            className={'col-sm-4 col-md-4 mb-4 mb-sm-4 mb-md-0'}
+                            variants={cardAnimation}
+                        >
+                            <motion.div 
+                                className={'howit-box text-center'}
+                                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                            >
                                 <div className={'hi-icon mx-auto mb-4'}>
                                     <svg width="53" height="53" viewBox="0 0 53 53" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -328,17 +390,29 @@ export default function LandingPage() {
                                     Immediate cash transfer upon
                                     verification and authentication
                                 </p>
-                            </div>
-                        </div>
-                    </div>
+                            </motion.div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </div>
             <section className="secure-storage-section" style={{backgroundColor: '#484C52'}}>
                 <div className="container-fluid px-0 overflow-hidden">
                     <div className="row align-items-center">
-                        <div className="col-md-6 order-1 order-sm-1 order-md-2 mb-5 mb-sm-5 mb-md-0">
-                            <img src={img4} className="img-fluid w-100 animated wow fadeInRight" alt="Secure Storage"/>
-                        </div>
+                        <motion.div 
+                            className="col-md-6 order-1 order-sm-1 order-md-2 mb-5 mb-sm-5 mb-md-0"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            variants={fadeInRight}
+                        >
+                            <motion.img 
+                                src={img4} 
+                                className="img-fluid w-100" 
+                                alt="Secure Storage"
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.3 }}
+                            />
+                        </motion.div>
                         <div className="col-md-6 order-2 order-sm-2 order-md-1">
                             <div className="section-content left-custom-padding animated wow fadeInLeft">
                                 <div className="sec-tag mb-5">
@@ -404,39 +478,72 @@ export default function LandingPage() {
                 <div className="container overflow-hidden">
                     <div className="row align-items-center">
 
-                        <div className="col-md-12 mb-5">
-                            <div className="section-content animated wow fadeInDown">
+                        <motion.div 
+                            className="col-md-12 mb-5"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            variants={fadeInUp}
+                        >
+                            <div className="section-content">
                                 <motion.h1
                                     className="mb-3 text-white text-center"
-                                    initial={{opacity: 0, y: 50}}
-                                    whileInView={{opacity: 1, y: 0}}
-                                    viewport={{once: true, margin: "-100px"}}
-                                    transition={{duration: 0.6, ease: "easeOut"}}
+                                    variants={fadeInUp}
                                 >
                                     Our global dealer network<br/>
                                     specilizes in the best luxury brands
                                 </motion.h1>
                             </div>
-
-                        </div>
-                        <div className="col-md-12 text-center">
-                            <video className="img-fluid animated wow zoomIn mx-auto" autoPlay muted loop playsInline>
+                        </motion.div>
+                        <motion.div 
+                            className="col-md-12 text-center"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            variants={scaleIn}
+                        >
+                            <video className="img-fluid mx-auto" autoPlay muted loop playsInline>
                                 <source src={brandscoinVideo} type="video/mp4"/>
                             </video>
-                        </div>
+                        </motion.div>
                     </div>
                     <div className={'py-5'}>
                         <hr className={'border-white border-1 opacity-100'}/>
                     </div>
                     <div className="">
                         <div className="container">
-                            <h2 className="text-5xl text-center text-white mb-3">Trusted by Collectors Worldwide</h2>
-                            <p className="section-subheadline white centered">
+                            <motion.h2 
+                                className="text-5xl text-center text-white mb-3"
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-100px" }}
+                                variants={fadeInUp}
+                            >
+                                Trusted by Collectors Worldwide
+                            </motion.h2>
+                            <motion.p 
+                                className="section-subheadline white centered"
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-100px" }}
+                                variants={fadeInUp}
+                                transition={{ delay: 0.2 }}
+                            >
                                 Our reputation is built on thousands of successful, secure, and transparent
                                 transactions.
-                            </p>
-                            <div className="testimonials-container">
-                                <div className="p-[30px] rounded-4 bg-[rgba(255,255,255,0.80)]">
+                            </motion.p>
+                            <motion.div 
+                                className="testimonials-container"
+                                variants={staggerContainer}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-50px" }}
+                            >
+                                <motion.div 
+                                    className="p-[30px] rounded-4 bg-[rgba(255,255,255,0.80)]"
+                                    variants={cardAnimation}
+                                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                                >
                                     <div className="stars flex gap-1">
                                         <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -479,8 +586,12 @@ export default function LandingPage() {
                                         and the entire process was transparent and secure."
                                     </p>
                                     <p className="testimonial-author text-center">-Robert S.</p>
-                                </div>
-                                <div className="p-[30px] rounded-4 bg-[rgba(255,255,255,0.80)]">
+                                </motion.div>
+                                <motion.div 
+                                    className="p-[30px] rounded-4 bg-[rgba(255,255,255,0.80)]"
+                                    variants={cardAnimation}
+                                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                                >
                                     <div className="stars flex gap-1">
                                         <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -523,8 +634,12 @@ export default function LandingPage() {
                                         of mind. Got paid instantly."
                                     </p>
                                     <p className="testimonial-author text-center">- Sarah L.</p>
-                                </div>
-                                <div className="p-[30px] rounded-4 bg-[rgba(255,255,255,0.80)]">
+                                </motion.div>
+                                <motion.div 
+                                    className="p-[30px] rounded-4 bg-[rgba(255,255,255,0.80)]"
+                                    variants={cardAnimation}
+                                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                                >
                                     <div className="stars flex gap-1">
                                         <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -568,9 +683,9 @@ export default function LandingPage() {
                                         offered the highest price."
                                     </p>
                                     <p className="testimonial-author text-center">- Michael P.</p>
-                                </div>
+                                </motion.div>
 
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
@@ -785,24 +900,51 @@ export default function LandingPage() {
             </div>
 
 
-            <div className={'ready-section py-5 py-md-5 my-md-5 text-center'}>
+            <motion.div 
+                className={'ready-section py-5 py-md-5 my-md-5 text-center'}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeInUp}
+            >
                 <div className={'container'}>
-                    <div className={'ready-content mb-5'}>
-                        <h1 className={'mb-3'}>
+                    <motion.div 
+                        className={'ready-content mb-5'}
+                        variants={staggerContainer}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        <motion.h1 
+                            className={'mb-3'}
+                            variants={fadeInUp}
+                        >
                             Ready to get your cash offer?
-                        </h1>
-                        <p>
+                        </motion.h1>
+                        <motion.p
+                            variants={fadeInUp}
+                        >
                             Join thousands of satisfied sellers who got the best price for their luxury timepieces
-                        </p>
-                    </div>
-                    <div className={'ready-btn-div text-center'}>
-                        <button className={'btn mb-3'}>
+                        </motion.p>
+                    </motion.div>
+                    <motion.div 
+                        className={'ready-btn-div text-center'}
+                        variants={fadeInUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        <motion.button 
+                            className={'btn mb-3'}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
                             Get your free valuation now
-                        </button>
+                        </motion.button>
                         <p>100% Secured & Confidential</p>
-                    </div>
+                    </motion.div>
                 </div>
-            </div>
+            </motion.div>
 
             <Footer />
 
