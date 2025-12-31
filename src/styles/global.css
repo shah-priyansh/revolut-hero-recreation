@@ -1631,6 +1631,90 @@ h1,h2,h3,h4,h5,h6 {
     letter-spacing: -0.02em;
     color: #000000;
 }
+
+.lf-head h4{
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    color: #2D3748;
+}
+.lf-head p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #4B5563;
+}
+.landing-form {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 30px;
+    border: 5px solid #6BC8AC;
+}
+.landing-form .btn {
+    background-color: #6BC8AC;
+    width: 100%;
+    color: #fff;
+    padding: 12px 0;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+}
+.form-group .attach-box {
+    display: flex;
+}
+.lf-content h1 {
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 60px;
+}
+.lf-content p {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+}
+.lfp-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.lfp-box h3 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 22px;
+}
+.lfp-box p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+.hi-icon {
+    background-color: #6BC8AC;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.howit-box h4 {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 28px;
+    margin-bottom: 10px;
+}
+.howit-box p {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+}
+.howit-box {
+    max-width: 350px;
+    margin: auto;
+}
 /* Responsive Styles for Revolut Hero */
 @media screen and (max-width: 1654px) {
     .revolut-hero-image-main {
@@ -1699,6 +1783,23 @@ h1,h2,h3,h4,h5,h6 {
     }
     .page-content p {
         font-size: 18px;
+    }
+    .landing-form {
+        padding: 20px;
+    }
+    .howit-box h4 {
+        font-size: 18px;
+    }
+    .howit-box p {
+        font-size: 16px;
+    }
+    .hi-icon {
+        width: 80px;
+        height: 80px;
+    }
+    .hi-icon svg{
+        width: 40px;
+        height: 40px;
     }
 }
 
@@ -1769,6 +1870,26 @@ h1,h2,h3,h4,h5,h6 {
     .contact-detail-box span {
         font-size: 14px;
     }
+    .lf-head h4{
+        font-size: 24px;
+    }
+    .lf-head p{
+        font-size: 14px;
+    }
+
+
+    .lf-content h1 {
+        font-size: 34px;
+        line-height: 40px;
+    }
+    .lf-content p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .lfp-box h3 {
+        font-size: 16px;
+    }
+
 
 }
 
