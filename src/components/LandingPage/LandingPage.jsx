@@ -94,7 +94,7 @@ export default function LandingPage() {
                     <div className={'row'}>
                         <div className={'col-md-6 col-lg-6 col-xl-7'}>
                             <div className={'lf-left text-white mb-5 mb-sm-5 mb-md-0'}>
-                                <motion.div 
+                                <motion.div
                                     className={'landing-logo mb-3 mb-md-5 mt-[-60px]'}
                                     initial="hidden"
                                     animate="visible"
@@ -103,7 +103,7 @@ export default function LandingPage() {
                                     <img src="/images/logo.svg" alt={'img'} width={'250'}
                                          className={'img-fluid'}/>
                                 </motion.div>
-                                <motion.div 
+                                <motion.div
                                     className={'lf-content mb-3 mb-md-5'}
                                     initial="hidden"
                                     animate="visible"
@@ -121,14 +121,14 @@ export default function LandingPage() {
                                     </p>
                                 </motion.div>
 
-                                <motion.div 
+                                <motion.div
                                     className={'lf-points-div mt-3'}
                                     variants={staggerContainer}
                                     initial="hidden"
                                     animate="visible"
                                 >
                                     <div className={'row'}>
-                                        <motion.div 
+                                        <motion.div
                                             className={'col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 mb-3'}
                                             variants={cardAnimation}
                                         >
@@ -154,7 +154,7 @@ export default function LandingPage() {
                                                 </p>
                                             </div>
                                         </motion.div>
-                                        <motion.div 
+                                        <motion.div
                                             className={'col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 mb-3'}
                                             variants={cardAnimation}
                                         >
@@ -183,7 +183,7 @@ export default function LandingPage() {
                                                 </p>
                                             </div>
                                         </motion.div>
-                                        <motion.div 
+                                        <motion.div
                                             className={'col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 mb-3'}
                                             variants={cardAnimation}
                                         >
@@ -215,7 +215,7 @@ export default function LandingPage() {
 
                             </div>
                         </div>
-                        <motion.div 
+                        <motion.div
                             className={'col-md-6 col-lg-6 col-xl-5'}
                             initial="hidden"
                             whileInView="visible"
@@ -244,9 +244,9 @@ export default function LandingPage() {
                                     <div className={'mb-3 form-group'}>
                                         <label>Upload Photo (Optional)</label>
                                         <div className={'relative'}>
-                                            <input type={'file'} className={'form-control hidden'} id={'Upload_Photo'}/>
+                                            <input type={'file'} className={'form-control d-none'} id={'Upload_Photo'}/>
                                             <label
-                                                className={'attach-box flex flex-col gap-1 border-2 border-dashed border-[#D1D5DB] p-4 rounded-lg justify-center items-center'}
+                                                className={'attach-box d-flex flex-column gap-1 border border-2 border-dashed rounded-3 p-4 justify-content-center align-items-center'}
                                                 htmlFor={'Upload_Photo'}>
                                                 <div>
                                                     <svg width="45" height="32" viewBox="0 0 45 32" fill="none"
@@ -281,7 +281,7 @@ export default function LandingPage() {
                                             Get Cash Offer Now
                                         </button>
                                     </div>
-                                    <div className={'flex gap-2 items-center justify-center text-[#6B7280] text-sm'}>
+                                    <div className={'d-flex gap-2 align-items-center justify-content-center small'}>
                                         <svg width="11" height="12" viewBox="0 0 11 12" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -300,7 +300,7 @@ export default function LandingPage() {
 
             <div className={'howit py-5 my-md-5'}>
                 <div className={'container'}>
-                    <motion.div 
+                    <motion.div
                         className="ready-content text-center mb-5"
                         initial="hidden"
                         whileInView="visible"
@@ -310,18 +310,18 @@ export default function LandingPage() {
                         <h1 className="mb-3">How It Works</h1>
                         <p>Get paid in 3 simple steps</p>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                         className={'row text-black'}
                         variants={staggerContainer}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-50px" }}
                     >
-                        <motion.div 
+                        <motion.div
                             className={'col-sm-4 col-md-4 mb-4 mb-sm-4 mb-md-0'}
                             variants={cardAnimation}
                         >
-                            <motion.div 
+                            <motion.div
                                 className={'howit-box text-center'}
                                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
                             >
@@ -340,11 +340,11 @@ export default function LandingPage() {
                                 </p>
                             </motion.div>
                         </motion.div>
-                        <motion.div 
+                        <motion.div
                             className={'col-sm-4 col-md-4 mb-4 mb-sm-4 mb-md-0'}
                             variants={cardAnimation}
                         >
-                            <motion.div 
+                            <motion.div
                                 className={'howit-box text-center'}
                                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
                             >
@@ -365,11 +365,11 @@ export default function LandingPage() {
                                 </p>
                             </motion.div>
                         </motion.div>
-                        <motion.div 
+                        <motion.div
                             className={'col-sm-4 col-md-4 mb-4 mb-sm-4 mb-md-0'}
                             variants={cardAnimation}
                         >
-                            <motion.div 
+                            <motion.div
                                 className={'howit-box text-center'}
                                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
                             >
@@ -396,16 +396,16 @@ export default function LandingPage() {
             <section className="secure-storage-section" style={{backgroundColor: '#484C52'}}>
                 <div className="container-fluid px-0 overflow-hidden">
                     <div className="row align-items-center">
-                        <motion.div 
+                        <motion.div
                             className="col-md-6 order-1 order-sm-1 order-md-2 mb-5 mb-sm-5 mb-md-0"
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-100px" }}
                             variants={fadeInRight}
                         >
-                            <motion.img 
-                                src="/images/custody2.png" 
-                                className="img-fluid w-100" 
+                            <motion.img
+                                src="/images/custody2.png"
+                                className="img-fluid w-100"
                                 alt="Secure Storage"
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ duration: 0.3 }}
@@ -476,7 +476,7 @@ export default function LandingPage() {
                 <div className="container overflow-hidden">
                     <div className="row align-items-center">
 
-                        <motion.div 
+                        <motion.div
                             className="col-md-12 mb-5"
                             initial="hidden"
                             whileInView="visible"
@@ -493,7 +493,7 @@ export default function LandingPage() {
                                 </motion.h1>
                             </div>
                         </motion.div>
-                        <motion.div 
+                        <motion.div
                             className="col-md-12 text-center"
                             initial="hidden"
                             whileInView="visible"
@@ -510,8 +510,8 @@ export default function LandingPage() {
                     </div>
                     <div className="">
                         <div className="container">
-                            <motion.h2 
-                                className="text-5xl text-center text-white mb-3"
+                            <motion.h2
+                                className="display-4 text-center text-white mb-3"
                                 initial="hidden"
                                 whileInView="visible"
                                 viewport={{ once: true, margin: "-100px" }}
@@ -519,7 +519,7 @@ export default function LandingPage() {
                             >
                                 Trusted by Collectors Worldwide
                             </motion.h2>
-                            <motion.p 
+                            <motion.p
                                 className="section-subheadline white centered"
                                 initial="hidden"
                                 whileInView="visible"
@@ -530,15 +530,15 @@ export default function LandingPage() {
                                 Our reputation is built on thousands of successful, secure, and transparent
                                 transactions.
                             </motion.p>
-                            <motion.div 
+                            <motion.div
                                 className="testimonials-container"
                                 variants={staggerContainer}
                                 initial="hidden"
                                 whileInView="visible"
                                 viewport={{ once: true, margin: "-50px" }}
                             >
-                                <motion.div 
-                                    className="p-[30px] rounded-4 bg-[rgba(255,255,255,0.80)]"
+                                <motion.div
+                                    className="p-4 rounded-4 bg-white bg-opacity-75"
                                     variants={cardAnimation}
                                     whileHover={{ y: -8, transition: { duration: 0.3 } }}
                                 >
@@ -585,8 +585,8 @@ export default function LandingPage() {
                                     </p>
                                     <p className="testimonial-author text-center">-Robert S.</p>
                                 </motion.div>
-                                <motion.div 
-                                    className="p-[30px] rounded-4 bg-[rgba(255,255,255,0.80)]"
+                                <motion.div
+                                    className="p-4 rounded-4 bg-white bg-opacity-75"
                                     variants={cardAnimation}
                                     whileHover={{ y: -8, transition: { duration: 0.3 } }}
                                 >
@@ -633,8 +633,8 @@ export default function LandingPage() {
                                     </p>
                                     <p className="testimonial-author text-center">- Sarah L.</p>
                                 </motion.div>
-                                <motion.div 
-                                    className="p-[30px] rounded-4 bg-[rgba(255,255,255,0.80)]"
+                                <motion.div
+                                    className="p-4 rounded-4 bg-white bg-opacity-75"
                                     variants={cardAnimation}
                                     whileHover={{ y: -8, transition: { duration: 0.3 } }}
                                 >
@@ -898,7 +898,7 @@ export default function LandingPage() {
             </div>
 
 
-            <motion.div 
+            <motion.div
                 className={'ready-section py-5 py-md-5 my-md-5 text-center'}
                 initial="hidden"
                 whileInView="visible"
@@ -906,14 +906,14 @@ export default function LandingPage() {
                 variants={fadeInUp}
             >
                 <div className={'container'}>
-                    <motion.div 
+                    <motion.div
                         className={'ready-content mb-5'}
                         variants={staggerContainer}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
                     >
-                        <motion.h1 
+                        <motion.h1
                             className={'mb-3'}
                             variants={fadeInUp}
                         >
@@ -925,14 +925,14 @@ export default function LandingPage() {
                             Join thousands of satisfied sellers who got the best price for their luxury timepieces
                         </motion.p>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                         className={'ready-btn-div text-center'}
                         variants={fadeInUp}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
                     >
-                        <motion.button 
+                        <motion.button
                             className={'btn mb-3'}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -946,7 +946,7 @@ export default function LandingPage() {
 
             <Footer />
 
-          
+
         </div>
     );
 }

@@ -53,13 +53,24 @@ const Header = () => {
             <div className="header-content">
                 {/* Logo and Brand */}
                 <div className="logo-section">
-                    <Link to="/home">
-                        <img
-                            src="/images/logo.svg"
-                            alt="iLock Logo"
-                            className="logo-image"
-                        />
-                    </Link>
+                    <div className={'logo-white'}>
+                        <Link to="/home">
+                            <img
+                                src="/images/logo.svg"
+                                alt="iLock Logo"
+                                className="logo-image"
+                            />
+                        </Link>
+                    </div>
+                    <div className={'logo-dark'}>
+                        <Link to="/home">
+                            <img
+                                src="/images/logo2.svg"
+                                alt="iLock Logo"
+                                className="logo-image"
+                            />
+                        </Link>
+                    </div>
                 </div>
 
                 {/* Desktop Navigation Menu */}

@@ -397,7 +397,7 @@ export default function AboutUs() {
                                     variants={cardAnimation}
                                 >
                                     <motion.div
-                                        className="bg-white rounded shadow h-100 p-4 p-xl-5"
+                                        className="person-card bg-white rounded shadow h-100 p-4 p-xl-5"
                                         style={{borderRadius: '1.5rem'}}
                                         whileHover={{y: -10, transition: {duration: 0.3}}}
                                     >
@@ -407,10 +407,10 @@ export default function AboutUs() {
                                                 transition={{duration: 0.3}}
                                             >
                                                 <div
-                                                    className="d-flex justify-content-center align-items-center border-2 rounded-circle"
+                                                    className="d-flex justify-content-center align-items-center border-2 rounded-circle ust-div"
                                                     style={{
-                                                        width: '90px',
-                                                        height: '90px',
+                                                        width: '100px',
+                                                        height: '100px',
                                                         borderColor: '#6BC8AC',
                                                         backgroundColor: '#83D7F5'
                                                     }}>
@@ -459,7 +459,7 @@ export default function AboutUs() {
                                     variants={cardAnimation}
                                 >
                                     <motion.div
-                                        className="bg-white rounded shadow h-100 p-4 p-xl-5"
+                                        className="person-card bg-white rounded shadow h-100 p-4 p-xl-5"
                                         style={{borderRadius: '1.5rem'}}
                                         whileHover={{y: -10, transition: {duration: 0.3}}}
                                     >
@@ -469,10 +469,10 @@ export default function AboutUs() {
                                                 transition={{duration: 0.3}}
                                             >
                                                 <div
-                                                    className="d-flex justify-content-center align-items-center border border-2 rounded-circle"
+                                                    className="d-flex justify-content-center align-items-center border border-2 rounded-circle ust-div"
                                                     style={{
-                                                        width: '90px',
-                                                        height: '90px',
+                                                        width: '100px',
+                                                        height: '100px',
                                                         borderColor: '#6BC8AC',
                                                         backgroundColor: '#83D7F5'
                                                     }}>
