@@ -176,10 +176,11 @@ body {
 }
 
 .nav-link:hover {
-  color: #0290C4;
-  background-color: rgba(2, 144, 196, 0.15);
+  color: white;
+  background-color: #6BC8AC;
+  border-radius: 9999px;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(2, 144, 196, 0.2);
+  box-shadow: 0 4px 12px rgba(107, 200, 172, 0.3);
 }
 
 /* Mobile Menu Button */

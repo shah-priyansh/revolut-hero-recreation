@@ -127,7 +127,7 @@ const RevolutHero = () => {
 
         // 4. The image inside the box ZOOMS OUT
         tl.fromTo(innerImage.current,
-            { scale: 1.5 }, // Reduced from 2.2 to 1.5 for less zoom
+            { scale: 1.0 }, // Reduced from 2.2 to 1.5 for less zoom
             { scale: 1.0, duration: 1.4, ease: "expo.inOut" }, // Reduced from 2 to 1.4
             0);
 
