@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Logo from '../Logo/Logo';
 import '../RevolutHero/RevolutHero.css';
 
 const Header = () => {
@@ -53,24 +54,9 @@ const Header = () => {
             <div className="header-content">
                 {/* Logo and Brand */}
                 <div className="logo-section">
-                    <div className={'logo-white'}>
-                        <Link to="/home">
-                            <img
-                                src="/images/logo.svg"
-                                alt="iLock Logo"
-                                className="logo-image"
-                            />
-                        </Link>
-                    </div>
-                    <div className={'logo-dark'}>
-                        <Link to="/home">
-                            <img
-                                src="/images/logo2.svg"
-                                alt="iLock Logo"
-                                className="logo-image"
-                            />
-                        </Link>
-                    </div>
+                    <Link to="/home">
+                        <Logo />
+                    </Link>
                 </div>
 
                 {/* Desktop Navigation Menu */}
@@ -110,11 +96,7 @@ const Header = () => {
                     <Link to="/" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
                     <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
                     <div className="mobile-menu-logo">
-                        <img
-                            src="/images/logo.svg"
-                            alt="iLock Logo"
-                            className="mobile-logo-image"
-                        />
+                        <Logo />
                     </div>
                     <Link to="/about" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link>
                     <Link to="/contact" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact & Support</Link>
