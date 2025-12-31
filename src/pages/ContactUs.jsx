@@ -1,6 +1,72 @@
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import React from "react";
+import React, { useState } from "react";
+import './ContactUs.css';
+
+// Accordion Component
+const Accordion = () => {
+    const [openIndex, setOpenIndex] = useState(null);
+
+    const questions = [
+        {
+            question: "How quickly will I receive payment?",
+            answer: "Once you accept our offer, you'll receive payment within 48 hours. We process all transactions securely and efficiently to ensure you get your funds as quickly as possible. Payment methods include bank transfer, wire transfer, or other secure payment options based on your preference."
+        },
+        {
+            question: "Is the shipping process fully insured?",
+            answer: "Yes, absolutely. Every watch is fully insured from the moment it leaves your hands until it reaches our secure facility. We partner with leading insurance providers to ensure comprehensive coverage. You'll receive tracking information and insurance details as soon as your watch is in transit."
+        },
+        {
+            question: "What happens if I reject the final offer?",
+            answer: "If you decide not to accept our offer, your watch will be returned to you at no cost. We cover all return shipping and insurance costs. There are no obligations or fees - you're free to accept or decline any offer we make. Your watch will be returned in the same condition it was received."
+        },
+        {
+            question: "Do you authenticate every watch?",
+            answer: "Yes, every watch undergoes a comprehensive authentication process by certified watch experts. Our team includes members of the Association of Independent Watch Specialists (AIWS) who verify authenticity, condition, and provenance. This authentication is recorded on an immutable NFT for future reference, significantly enhancing your watch's value."
+        },
+        {
+            question: "What brands do you accept?",
+            answer: "We accept all major luxury watch brands including Rolex, Patek Philippe, Audemars Piguet, Omega, Cartier, Vacheron Constantin, Jaeger-LeCoultre, and many others. Our global dealer network specializes in the best luxury brands, ensuring you receive competitive offers regardless of your watch's make or model."
+        }
+    ];
+
+    const toggleQuestion = (index) => {
+        setOpenIndex(openIndex === index ? null : index);
+    };
+
+    return (
+        <div className="faq-accordion">
+            {questions.map((item, index) => (
+                <div key={index} className="accordion-item">
+                    <button
+                        className={`accordion-button ${openIndex === index ? 'active' : ''}`}
+                        onClick={() => toggleQuestion(index)}
+                        aria-expanded={openIndex === index}
+                    >
+                        <span className="accordion-question">{item.question}</span>
+                        <span className={`accordion-icon ${openIndex === index ? 'open' : ''}`}>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                {openIndex === index ? (
+                                    <path d="M5 12H19" stroke="#6BC8AC" strokeWidth="2" strokeLinecap="round"/>
+                                ) : (
+                                    <>
+                                        <path d="M12 5V19" stroke="#6BC8AC" strokeWidth="2" strokeLinecap="round"/>
+                                        <path d="M5 12H19" stroke="#6BC8AC" strokeWidth="2" strokeLinecap="round"/>
+                                    </>
+                                )}
+                            </svg>
+                        </span>
+                    </button>
+                    <div className={`accordion-content ${openIndex === index ? 'open' : ''}`}>
+                        <div className="accordion-answer">
+                            {item.answer}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+};
 
 export default function ContactUs() {
     return (
@@ -360,8 +426,7 @@ export default function ContactUs() {
                         </div>
 
                         <div className={'accordion-div'}>
-
-
+                            <Accordion />
                         </div>
                     </div>
                 </div>

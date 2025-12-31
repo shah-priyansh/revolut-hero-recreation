@@ -1,14 +1,8 @@
+import { motion } from "framer-motion";
 import React, { useState } from 'react';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import './LandingPage.css';
-import heroBackground from '../../assets/images/hero-background.jpg';
-import logoImg from '../../assets/images/logo.svg';
-import img3 from '../../assets/images/img3.png';
-import img4 from '../../assets/images/custody2.png';
 import brandscoinVideo from '../../assets/images/brandscoin.mp4';
-import heroImage from "../../assets/images/hero-background.jpg";
-import {motion} from "framer-motion";
+import img4 from '../../assets/images/custody2.png';
+import './LandingPage.css';
 
 export default function LandingPage() {
     const [formData, setFormData] = useState({
