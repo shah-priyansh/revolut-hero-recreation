@@ -1,12 +1,6 @@
 import './LuxryFrame.css';
 import { motion } from 'framer-motion';
 import Footer from '../Footer/Footer';
-import mapVideo from '../../assets/images/map.mp4';
-import coinVideo from '../../assets/images/coin.mp4';
-import brandscoinVideo from '../../assets/images/brandscoin.mp4';
-import img3 from '../../assets/images/img3.png';
-import img5 from '../../assets/images/img5.png';
-import authenticImg from '../../assets/images/authentic.png';
 
 export const LuxryFrame = () => {
     return (
@@ -19,7 +13,7 @@ export const LuxryFrame = () => {
                     <div className="row align-items-center">
                         <div className="col-md-6 order-1 order-sm-1 order-md-2 mb-5 mb-sm-5 mb-md-0">
                             <video className="img-fluid animated wow fadeInRight" autoPlay muted loop playsInline>
-                                <source src={mapVideo} type="video/mp4"/>
+                                <source src="/images/map.mp4" type="video/mp4"/>
                             </video>
                         </div>
                         <div className="col-md-6 order-2 order-sm-2 order-md-1">
@@ -85,7 +79,7 @@ export const LuxryFrame = () => {
                     <div className="row align-items-center">
                         <div className="col-md-6 order-1 order-sm-1 order-md-1 mb-5 mb-sm-5 mb-md-0">
                             <video className="img-fluid animated wow fadeInLeft" autoPlay muted loop playsInline>
-                                <source src={coinVideo} type="video/mp4"/>
+                                <source src="/images/coin.mp4" type="video/mp4"/>
                             </video>
                         </div>
                         <div className="col-md-6 order-2 order-sm-2 order-md-2">
@@ -143,7 +137,7 @@ export const LuxryFrame = () => {
                 <div className="container-fluid px-0 overflow-hidden">
                     <div className="row align-items-center">
                         <div className="col-md-6 order-1 order-sm-1 order-md-2 mb-5 mb-sm-5 mb-md-0">
-                            <img src={img3} className="img-fluid w-100 animated wow fadeInRight" alt="Secure Storage"/>
+                            <img src="/images/img3.png" className="img-fluid w-100 animated wow fadeInRight" alt="Secure Storage"/>
                         </div>
                         <div className="col-md-6 order-2 order-sm-2 order-md-1">
                             <div className="section-content left-custom-padding animated wow fadeInLeft">
@@ -226,7 +220,7 @@ export const LuxryFrame = () => {
                         </div>
                         <div className="col-md-12 text-center">
                             <video className="img-fluid animated wow zoomIn mx-auto" autoPlay muted loop playsInline>
-                                <source src={brandscoinVideo} type="video/mp4"/>
+                                <source src="/images/brandscoin.mp4" type="video/mp4"/>
                             </video>
                         </div>
                     </div>
@@ -239,9 +233,9 @@ export const LuxryFrame = () => {
                         <div
                             className="col-md-6 order-1 order-sm-1 order-md-2 mb-5 mb-sm-5 mb-md-0 animated wow fadeInRight">
                             <div className="text-end mb-5">
-                                <img src={authenticImg} className="img-fluid ms-auto" alt="Authentic"/>
+                                <img src="/images/authentic.png" className="img-fluid ms-auto" alt="Authentic"/>
                             </div>
-                            <img src={img5} className="img-fluid w-100" alt="Join Network"/>
+                            <img src="/images/img5.png" className="img-fluid w-100" alt="Join Network"/>
                         </div>
                         <div className="col-md-6 order-2 order-sm-2 order-md-1 ">
                             <div className="section-content green-section-content animated wow fadeInLeft">

@@ -4,9 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { motion } from 'framer-motion';
 import './RevolutHero.css';
-import heroImage from '../../assets/images/hero-background.jpg';
-import image1 from '../../assets/images/image-1.png';
-import image3 from '../../assets/images/image-3.png';
 import { LuxryFrame } from '../LuxryFrame/LuxryFrame';
 import Header from '../Header/Header';
 
@@ -168,7 +165,7 @@ const RevolutHero = () => {
                     <div
                         className="background-image-fade"
                         ref={backgroundFade}
-                        style={{ backgroundImage: `url(${heroImage})` }}
+                        style={{ backgroundImage: `url('/images/hero-background.jpg')` }}
                     ></div>
 
                     <div className="description-text" ref={description}>
@@ -212,7 +209,7 @@ const RevolutHero = () => {
                             <div className="side-card card-left" ref={leftCard}>
                                 <img
                                     className="box-inner-image"
-                                    src={image1}
+                                    src="/images/image-1.png"
                                     alt="Image 1"
                                 />
                                 <div className="ui-overlay ui-bottom">
@@ -226,7 +223,7 @@ const RevolutHero = () => {
                             <div className="expanding-box" ref={expandingBox}>
                                 <img
                                     className="box-inner-image"
-                                    src={heroImage}
+                                    src="/images/hero-background.jpg"
                                     alt="Hero"
                                     ref={innerImage}
                                 />
@@ -245,7 +242,7 @@ const RevolutHero = () => {
                             <div className="side-card card-right" ref={rightCard}>
                                 <img
                                     className="box-inner-image"
-                                    src={image3}
+                                    src="/images/image-3.png"
                                     alt="Image 1"
                                 />
                                 <div className="ui-overlay ui-bottom">

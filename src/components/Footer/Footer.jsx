@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logoImg from '../../assets/images/logo.svg';
 import './Footer.css';
 
 const Footer = () => {
@@ -12,7 +11,7 @@ const Footer = () => {
                         <div className="top-footer text-center">
                             <div className="footer-logo text-center">
                                 <Link to="/">
-                                    <img src={logoImg} className="img-fluid mx-auto d-block" alt="iLock Logo"/>
+                                    <img src="/images/logo.svg" className="img-fluid mx-auto d-block" alt="iLock Logo"/>
                                 </Link>
                             </div>
 

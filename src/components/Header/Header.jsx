@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import logoImage from '../../assets/images/logo.svg';
 import '../RevolutHero/RevolutHero.css';
 
 const Header = () => {
@@ -56,7 +55,7 @@ const Header = () => {
                 <div className="logo-section">
                     <Link to="/home">
                         <img
-                            src={logoImage}
+                            src="/images/logo.svg"
                             alt="iLock Logo"
                             className="logo-image"
                         />
@@ -101,7 +100,7 @@ const Header = () => {
                     <a href="#" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
                     <div className="mobile-menu-logo">
                         <img
-                            src={logoImage}
+                            src="/images/logo.svg"
                             alt="iLock Logo"
                             className="mobile-logo-image"
                         />

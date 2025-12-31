@@ -22,7 +22,7 @@
 }
 
 :root {
-    --bg-hero: url('../assets/images/hero-background.jpg');
+    --bg-hero: url('/images/hero-background.jpg');
 
 
     --primary: #0290C4;

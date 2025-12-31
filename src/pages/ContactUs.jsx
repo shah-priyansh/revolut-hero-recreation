@@ -2,7 +2,6 @@ import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import React, { useState } from "react";
 import { motion } from 'framer-motion';
-import contactBanner from '../assets/images/contact-banner.png';
 import './ContactUs.css';
 
 // Accordion Component
@@ -342,7 +341,7 @@ export default function ContactUs() {
                 animate="visible"
                 variants={fadeInUp}
             >
-                <img src={contactBanner} className={'img-fluid'} alt="Contact Banner"/>
+                <img src="/images/contact-banner.png" className={'img-fluid'} alt="Contact Banner"/>
                 <motion.div 
                     className={'page-content text-center text-white'}
                     variants={staggerContainer}

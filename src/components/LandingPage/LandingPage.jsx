@@ -1,10 +1,5 @@
 import { motion } from "framer-motion";
 import React, { useState } from 'react';
-import brandscoinVideo from '../../assets/images/brandscoin.mp4';
-import img4 from '../../assets/images/custody2.png';
-import landingImg from '../../assets/images/landing-img.png';
-import logoImg from '../../assets/images/logo.svg';
-import expertAuthImg from '../../assets/images/expert-auth.png';
 import './LandingPage.css';
 import Footer from "../Footer/Footer";
 
@@ -93,7 +88,7 @@ export default function LandingPage() {
         <div className="landing-page">
 
             <div className={'landing-form-div py-5'}
-                 style={{backgroundImage: `url(${landingImg})`}}
+                 style={{backgroundImage: `url('/images/landing-img.png')`}}
             >
                 <div className={'container py-5'}>
                     <div className={'row'}>
@@ -105,7 +100,7 @@ export default function LandingPage() {
                                     animate="visible"
                                     variants={fadeInUp}
                                 >
-                                    <img src={logoImg} alt={'img'} width={'250'}
+                                    <img src="/images/logo.svg" alt={'img'} width={'250'}
                                          className={'img-fluid'}/>
                                 </motion.div>
                                 <motion.div 
@@ -409,7 +404,7 @@ export default function LandingPage() {
                             variants={fadeInRight}
                         >
                             <motion.img 
-                                src={img4} 
+                                src="/images/custody2.png" 
                                 className="img-fluid w-100" 
                                 alt="Secure Storage"
                                 whileHover={{ scale: 1.05 }}
@@ -506,7 +501,7 @@ export default function LandingPage() {
                             variants={scaleIn}
                         >
                             <video className="img-fluid mx-auto" autoPlay muted loop playsInline>
-                                <source src={brandscoinVideo} type="video/mp4"/>
+                                <source src="/images/brandscoin.mp4" type="video/mp4"/>
                             </video>
                         </motion.div>
                     </div>
@@ -893,7 +888,7 @@ export default function LandingPage() {
                                 whileHover={{scale: 1.05}}
                                 transition={{duration: 0.3}}
                             >
-                                <img src={expertAuthImg} className="img-fluid w-100"
+                                <img src="/images/expert-auth.png" className="img-fluid w-100"
                                      style={{objectFit: 'cover'}}
                                      alt="Security"/>
                             </motion.div>
