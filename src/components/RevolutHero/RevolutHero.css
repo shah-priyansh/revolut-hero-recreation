@@ -452,9 +452,15 @@ body {
   width: 120%;
   height: 120%;
   top: -10%;
-  /* left: -10%; */
+  left: -10%;
   object-fit: cover;
   transform-origin: center center;
+}
+
+/* Align expanding box image with background */
+.expanding-box .box-inner-image {
+  left: -15%;
+  top: -8%;
 }
 
 .side-card {
