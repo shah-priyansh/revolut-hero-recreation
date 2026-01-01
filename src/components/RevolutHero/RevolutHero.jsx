@@ -345,8 +345,7 @@ const RevolutHero = () => {
                         <motion.h1
                             className="hero-main-text"
                             initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, ease: "easeOut" }}
                         >
                             A safer, smarter way to{' '}
@@ -356,17 +355,15 @@ const RevolutHero = () => {
                         <motion.p
                             className="hero-sub-text"
                             initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
                         >
                             End-to-end Global Trading of Luxury Watches with guaranteed protection
                         </motion.p>
                         <motion.button
                             className="cta-button"
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
                             transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
                         >
                             Learn More

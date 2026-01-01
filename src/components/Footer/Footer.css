@@ -27,8 +27,9 @@
 }
 
 .footer-links a {
-    font-weight: 700;
-    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    font-size: 14px;
     line-height: 100%;
     letter-spacing: -0.02em;
     color: #FFFFFF;
@@ -49,11 +50,10 @@
 
 .footer-social a {
     display: inline-block;
-    transition: transform 0.3s ease;
 }
 
-.footer-social a:hover {
-    transform: translateY(-3px);
+.footer-social a svg path {
+    transition: fill 0.3s ease;
 }
 
 .footer-social a:hover svg path {
@@ -80,7 +80,7 @@
 /* Responsive Styles */
 @media screen and (max-width: 1499px) {
     .footer-links a {
-        font-size: 20px;
+        font-size: 14px;
     }
 }
 
@@ -88,9 +88,9 @@
     .footer-links {
         gap: 15px;
     }
-    
+
     .footer-links a {
-        font-size: 18px;
+        font-size: 14px;
     }
     
     .footer-social {

@@ -746,8 +746,9 @@ h1,h2,h3,h4,h5,h6 {
     padding: 80px 0 30px;
 }
 .footer-links a {
-    font-weight: 700;
-    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    font-size: 14px;
     line-height: 100%;
     letter-spacing: -0.02em;
     color: #FFFFFF;
@@ -988,7 +989,7 @@ h1,h2,h3,h4,h5,h6 {
         font-size: 20px;
     }
     .footer-links a {
-        font-size: 20px;
+        font-size: 14px;
     }
     .section-content ul li {
         font-size: 20px;
