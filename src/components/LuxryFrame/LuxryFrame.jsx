@@ -233,7 +233,16 @@ export const LuxryFrame = () => {
                         <div
                             className="col-md-6 order-1 order-sm-1 order-md-2 mb-5 mb-sm-5 mb-md-0 animated wow fadeInRight">
                             <div className="text-end mb-5">
-                                <img src="/images/authentic.png" className="img-fluid ms-auto" alt="Authentic"/>
+                                <motion.img
+                                    src="/images/shield-logo.svg"
+                                    className="img-fluid ms-auto"
+                                    alt="Authentic"
+                                    style={{ maxWidth: '50%' }}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, ease: "easeOut" }}
+                                />
                             </div>
                             <video className="img-fluid w-100" autoPlay muted loop playsInline>
                                 <source src="/images/shield.mp4" type="video/mp4"/>
