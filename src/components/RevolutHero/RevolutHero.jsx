@@ -74,15 +74,18 @@ const RevolutHero = () => {
 
         // Box shrinking animation - different sizes for mobile vs desktop
         if (isMobile) {
+            // Set centering for expanding-box on mobile (same as side cards)
+            gsap.set(expandingBox.current, { xPercent: -50, yPercent: -50 });
+
             tl.fromTo(expandingBox.current,
                 {
                     width: 340,
-                    height: 540,
+                    height: 580,
                     borderRadius: 20,
                 },
                 {
                     width: 300,
-                    height: 450,
+                    height: 520,
                     borderRadius: 28,
                     boxShadow: "0 20px 80px rgba(0,0,0,0.12)",
                     duration: 1.4,
@@ -111,26 +114,53 @@ const RevolutHero = () => {
             { scale: 0.9, duration: 1.4, ease: "expo.inOut" }, // Scaled down by 10%
             0);
 
-        // 5. Side cards slide in (desktop) or fade in from below (mobile)
+        // 5. Side cards slide in (desktop) or slide from right (mobile)
         if (isMobile) {
-            // Mobile: Fade in from below
+            // Mobile: Slide in from right like a carousel - wait for main animation
+            // Set centering for positioning
+            gsap.set(leftCard.current, { xPercent: -50, yPercent: -50 });
+            gsap.set(rightCard.current, { xPercent: -50, yPercent: -50 });
+
+            // Animate with explicit dimensions to match expanding-box
             tl.fromTo(leftCard.current,
-                { opacity: 0, y: 50 },
+                {
+                    opacity: 0,
+                    x: window.innerWidth,
+                    scale: 1,
+                    width: 300,
+                    height: 520,
+                    borderRadius: 28
+                },
                 {
                     opacity: 1,
-                    y: 0,
-                    duration: 0.7,
+                    x: 0,
+                    scale: 1,
+                    width: 300,
+                    height: 520,
+                    borderRadius: 28,
+                    duration: 0.8,
                     ease: "power2.out"
-                }, 0.8);
+                }, 1.5);
 
             tl.fromTo(rightCard.current,
-                { opacity: 0, y: 50 },
+                {
+                    opacity: 0,
+                    x: window.innerWidth,
+                    scale: 1,
+                    width: 300,
+                    height: 520,
+                    borderRadius: 28
+                },
                 {
                     opacity: 1,
-                    y: 0,
-                    duration: 0.7,
+                    x: 0,
+                    scale: 1,
+                    width: 300,
+                    height: 520,
+                    borderRadius: 28,
+                    duration: 0.8,
                     ease: "power2.out"
-                }, 0.9);
+                }, 2.0);
         } else {
             // Desktop: Slide in from sides
             tl.to(leftCard.current, {
