@@ -62,9 +62,7 @@ export default function AboutUs() {
     return (
         <div style={{minHeight: '100vh'}}>
             {/* Header */}
-            <div className={'custom-header'}>
-                <Header/>
-            </div>
+            <Header />
 
             <motion.div 
                 className={'page-banner position-relative'}
@@ -100,10 +98,11 @@ export default function AboutUs() {
                             viewport={{ once: true, margin: "-100px" }}
                             variants={fadeInLeft}
                         >
-                            <motion.img 
-                                src="/images/our-mission.png" 
+                            <motion.img
+                                src="/images/our-mission.png"
                                 className={'img-fluid'}
                                 alt="Our Mission"
+                                style={{ borderRadius: '30px' }}
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ duration: 0.3 }}
                             />
@@ -192,8 +191,8 @@ export default function AboutUs() {
                                     variants={cardAnimation}
                                 >
                                     <motion.div
-                                        className="bg-white rounded shadow h-100 p-4 p-xl-5"
-                                        style={{borderRadius: '1.5rem'}}
+                                        className="bg-white shadow h-100 p-4 p-xl-5"
+                                        style={{borderRadius: '30px'}}
                                         whileHover={{y: -10, transition: {duration: 0.3}}}
                                     >
                                         <motion.div
@@ -265,8 +264,8 @@ export default function AboutUs() {
                                     variants={cardAnimation}
                                 >
                                     <motion.div
-                                        className="bg-white rounded shadow h-100 p-4 p-xl-5"
-                                        style={{borderRadius: '1.5rem'}}
+                                        className="bg-white shadow h-100 p-4 p-xl-5"
+                                        style={{borderRadius: '30px'}}
                                         whileHover={{y: -10, transition: {duration: 0.3}}}
                                     >
                                         <motion.div
@@ -311,8 +310,8 @@ export default function AboutUs() {
                                     variants={cardAnimation}
                                 >
                                     <motion.div
-                                        className="bg-white rounded shadow h-100 p-4 p-xl-5"
-                                        style={{borderRadius: '1.5rem'}}
+                                        className="bg-white shadow h-100 p-4 p-xl-5"
+                                        style={{borderRadius: '30px'}}
                                         whileHover={{y: -10, transition: {duration: 0.3}}}
                                     >
                                         <motion.div
@@ -397,8 +396,8 @@ export default function AboutUs() {
                                     variants={cardAnimation}
                                 >
                                     <motion.div
-                                        className="person-card bg-white rounded shadow h-100 p-4 p-xl-5"
-                                        style={{borderRadius: '1.5rem'}}
+                                        className="person-card bg-white shadow h-100 p-4 p-xl-5"
+                                        style={{borderRadius: '30px'}}
                                         whileHover={{y: -10, transition: {duration: 0.3}}}
                                     >
                                         <div className="d-flex align-items-center mb-4" style={{gap: '1rem'}}>
@@ -459,8 +458,8 @@ export default function AboutUs() {
                                     variants={cardAnimation}
                                 >
                                     <motion.div
-                                        className="person-card bg-white rounded shadow h-100 p-4 p-xl-5"
-                                        style={{borderRadius: '1.5rem'}}
+                                        className="person-card bg-white shadow h-100 p-4 p-xl-5"
+                                        style={{borderRadius: '30px'}}
                                         whileHover={{y: -10, transition: {duration: 0.3}}}
                                     >
                                         <div className="d-flex align-items-center mb-4" style={{gap: '1rem'}}>

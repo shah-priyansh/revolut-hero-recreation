@@ -74,7 +74,7 @@ export const LuxryFrame = () => {
                     </div>
                 </div>
             </section>
-            <section className="highest-prices-section" style={{backgroundColor: '#F9F9F9'}}>
+            <section className="highest-prices-section" style={{backgroundColor: 'rgb(250, 250, 250)'}}>
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-md-6 order-1 order-sm-1 order-md-1 mb-5 mb-sm-5 mb-md-0">
@@ -199,7 +199,7 @@ export const LuxryFrame = () => {
                 </div>
             </section>
 
-            <section className="our-globle-section custom-padding" style={{backgroundColor: '#83D7F5'}}>
+            <section className="our-globle-section custom-padding" style={{backgroundColor: 'rgb(149, 220, 247)'}}>
                 <div className="container overflow-hidden">
                     <div className="row align-items-center">
 
@@ -227,15 +227,26 @@ export const LuxryFrame = () => {
                 </div>
             </section>
 
-            <section className="join-network-section custom-padding" style={{backgroundColor: '#9CC2B8'}}>
+            <section className="join-network-section custom-padding" style={{backgroundColor: 'rgb(157, 193, 185)'}}>
                 <div className="container overflow-hidden">
                     <div className="row align-items-center">
                         <div
                             className="col-md-6 order-1 order-sm-1 order-md-2 mb-5 mb-sm-5 mb-md-0 animated wow fadeInRight">
                             <div className="text-end mb-5">
-                                <img src="/images/authentic.png" className="img-fluid ms-auto" alt="Authentic"/>
+                                <motion.img
+                                    src="/images/shield-logo.svg"
+                                    className="img-fluid ms-auto"
+                                    alt="Authentic"
+                                    style={{ maxWidth: '50%' }}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, ease: "easeOut" }}
+                                />
                             </div>
-                            <img src="/images/img5.png" className="img-fluid w-100" alt="Join Network"/>
+                            <video className="img-fluid w-100" autoPlay muted loop playsInline>
+                                <source src="/images/shield.mp4" type="video/mp4"/>
+                            </video>
                         </div>
                         <div className="col-md-6 order-2 order-sm-2 order-md-1 ">
                             <div className="section-content green-section-content animated wow fadeInLeft">

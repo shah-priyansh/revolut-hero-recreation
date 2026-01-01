@@ -472,7 +472,7 @@ export default function LandingPage() {
             </section>
 
 
-            <section className="our-globle-section custom-padding" style={{backgroundColor: '#83D7F5'}}>
+            <section className="our-globle-section custom-padding" style={{backgroundColor: 'rgb(149, 220, 247)'}}>
                 <div className="container overflow-hidden">
                     <div className="row align-items-center">
 
