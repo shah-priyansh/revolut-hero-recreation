@@ -332,10 +332,8 @@ export default function ContactUs() {
                     </div>
                 </div>
             </div>*/}
-            <div className={'custom-header'}>
-                <Header/>
-            </div>
-            <motion.div 
+            <Header />
+            <motion.div
                 className={'page-banner position-relative'}
                 initial="hidden"
                 animate="visible"

@@ -1,30 +1,101 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './Footer.css';
 
 const Footer = () => {
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const linkVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.4, ease: "easeOut" }
+        }
+    };
+
+    const socialVariants = {
+        hidden: { opacity: 0, scale: 0.5 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: { duration: 0.3, ease: "easeOut" }
+        }
+    };
+
     return (
         <footer className="main-footer">
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="top-footer text-center">
-                            <div className="footer-logo text-center">
+                            <motion.div
+                                className="footer-logo text-center"
+                                initial={{ opacity: 0, y: -20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.6, ease: "easeOut" }}
+                            >
                                 <Link to="/">
-                                    <img src="/images/logo.svg" className="img-fluid mx-auto d-block" alt="iLock Logo"/>
+                                    <motion.img
+                                        src="/images/logo.svg"
+                                        className="img-fluid mx-auto d-block"
+                                        alt="iLock Logo"
+                                        whileHover={{ scale: 1.05 }}
+                                        transition={{ duration: 0.2 }}
+                                    />
                                 </Link>
-                            </div>
+                            </motion.div>
 
-                            <div className="footer-links my-5">
-                                <Link to="/">Home</Link>
-                                <a href="#features">Features</a>
-                                <Link to="/about">About Us</Link>
-                                <Link to="/contact">Contact & Support</Link>
-                                <a href="#download">Download App</a>
-                            </div>
+                            <motion.div
+                                className="footer-links my-5"
+                                variants={containerVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-50px" }}
+                            >
+                                <motion.span variants={linkVariants}>
+                                    <Link to="/">Home</Link>
+                                </motion.span>
+                                <motion.span variants={linkVariants}>
+                                    <a href="#features">Features</a>
+                                </motion.span>
+                                <motion.span variants={linkVariants}>
+                                    <Link to="/about">About Us</Link>
+                                </motion.span>
+                                <motion.span variants={linkVariants}>
+                                    <Link to="/contact">Contact & Support</Link>
+                                </motion.span>
+                                <motion.span variants={linkVariants}>
+                                    <a href="#download">Download App</a>
+                                </motion.span>
+                            </motion.div>
 
-                            <div className="footer-social">
-                                <a href="#" title="Instagram" aria-label="Instagram">
+                            <motion.div
+                                className="footer-social"
+                                variants={containerVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-50px" }}
+                            >
+                                <motion.a
+                                    href="#"
+                                    title="Instagram"
+                                    aria-label="Instagram"
+                                    variants={socialVariants}
+                                    whileHover={{ scale: 1.2, y: -5 }}
+                                    transition={{ duration: 0.2 }}
+                                >
                                     <svg width="35" height="35" viewBox="0 0 35 35" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -37,8 +108,15 @@ const Footer = () => {
                                             d="M26.5892 10.1487C27.7378 10.1487 28.669 9.21847 28.669 8.07094C28.669 6.92342 27.7378 5.99316 26.5892 5.99316C25.4405 5.99316 24.5093 6.92342 24.5093 8.07094C24.5093 9.21847 25.4405 10.1487 26.5892 10.1487Z"
                                             fill="white"/>
                                     </svg>
-                                </a>
-                                <a href="#" title="X" aria-label="X (Twitter)">
+                                </motion.a>
+                                <motion.a
+                                    href="#"
+                                    title="X"
+                                    aria-label="X (Twitter)"
+                                    variants={socialVariants}
+                                    whileHover={{ scale: 1.2, y: -5 }}
+                                    transition={{ duration: 0.2 }}
+                                >
                                     <svg width="27" height="28" viewBox="0 0 27 28" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -51,8 +129,15 @@ const Footer = () => {
                                             d="M25.9979 0L15.9861 11.6356L14.779 13.0452L13.7554 11.5622L14.9666 10.1526L21.7485 2.26926L23.7101 0H25.9979Z"
                                             fill="white"/>
                                     </svg>
-                                </a>
-                                <a href="#" title="LinkedIn" aria-label="LinkedIn">
+                                </motion.a>
+                                <motion.a
+                                    href="#"
+                                    title="LinkedIn"
+                                    aria-label="LinkedIn"
+                                    variants={socialVariants}
+                                    whileHover={{ scale: 1.2, y: -5 }}
+                                    transition={{ duration: 0.2 }}
+                                >
                                     <svg width="33" height="33" viewBox="0 0 33 33" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -65,20 +150,33 @@ const Footer = () => {
                                             d="M7.82595 3.89074C7.82595 6.05407 6.07235 7.81407 3.91097 7.81407C1.77812 7.81407 0.0082453 6.05407 8.91123e-05 3.92333C-0.00806707 1.77222 1.76182 0 3.91913 0C6.06013 0 7.82187 1.75593 7.82595 3.88667V3.89074Z"
                                             fill="#FEFEFE"/>
                                     </svg>
-                                </a>
-                                <a href="#" title="YouTube" aria-label="YouTube">
+                                </motion.a>
+                                <motion.a
+                                    href="#"
+                                    title="YouTube"
+                                    aria-label="YouTube"
+                                    variants={socialVariants}
+                                    whileHover={{ scale: 1.2, y: -5 }}
+                                    transition={{ duration: 0.2 }}
+                                >
                                     <svg width="37" height="26" viewBox="0 0 37 26" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M35.9361 4.00889C35.5161 2.43222 34.2723 1.18963 32.69 0.765926C29.8272 4.37101e-07 18.3514 0 18.3514 0C18.3514 0 6.87567 4.37101e-07 4.01285 0.765926C2.43463 1.18963 1.1908 2.42815 0.766683 4.00889C1.9932e-06 6.86889 0 12.8333 0 12.8333C0 12.8333 1.9932e-06 18.7978 0.766683 21.6578C1.18673 23.2344 2.43055 24.477 4.01285 24.9007C6.87567 25.6667 18.3514 25.6667 18.3514 25.6667C18.3514 25.6667 29.8272 25.6667 32.69 24.9007C34.2682 24.477 35.512 23.2385 35.9361 21.6578C36.7028 18.7978 36.7028 12.8333 36.7028 12.8333C36.7028 12.8333 36.7028 6.86889 35.9361 4.00889ZM14.6811 18.3333V7.33333L24.2157 12.8333L14.6811 18.3333Z"
                                             fill="white"/>
                                     </svg>
-                                </a>
-                            </div>
+                                </motion.a>
+                            </motion.div>
                         </div>
-                        <div className="bottom-footer text-center mt-5 pt-5">
+                        <motion.div
+                            className="bottom-footer text-center mt-5 pt-5"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true, margin: "-30px" }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                        >
                             <p className="text-white">© 2025 iLock</p>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>

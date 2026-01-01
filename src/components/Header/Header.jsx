@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import '../RevolutHero/RevolutHero.css';
 
-const Header = () => {
+const Header = ({ logo }) => {
     const headerRef = useRef();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -55,7 +55,7 @@ const Header = () => {
                 {/* Logo and Brand */}
                 <div className="logo-section">
                     <Link to="/home">
-                        <Logo />
+                        {logo ? <img src={logo} alt="iLock" className="custom-logo" /> : <Logo />}
                     </Link>
                 </div>
 

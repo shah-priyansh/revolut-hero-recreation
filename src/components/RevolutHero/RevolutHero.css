@@ -107,6 +107,13 @@ body {
   object-fit: contain;
 }
 
+.custom-logo {
+  height: 50px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .brand-text {
   display: flex;
   flex-direction: column;
