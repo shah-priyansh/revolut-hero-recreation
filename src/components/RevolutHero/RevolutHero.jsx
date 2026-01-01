@@ -22,6 +22,7 @@ const RevolutHero = () => {
     const description = useRef();
     const cardsSectionHeader = useRef();
     const [scrollY, setScrollY] = useState(0);
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
 
     // Track scroll position
     useEffect(() => {
@@ -33,6 +34,27 @@ const RevolutHero = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Handle resize - recreate animations when crossing breakpoint
+    useEffect(() => {
+        let resizeTimeout;
+        const handleResize = () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const nowDesktop = window.innerWidth > 768;
+                if (nowDesktop !== isDesktop) {
+                    setIsDesktop(nowDesktop);
+                }
+                ScrollTrigger.refresh();
+            }, 150);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            clearTimeout(resizeTimeout);
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [isDesktop]);
+
     // Set initial zoomed-in state for desktop
     useEffect(() => {
         if (innerImage.current) {
@@ -40,9 +62,9 @@ const RevolutHero = () => {
         }
     }, []);
 
-    // Run animations on all devices
+    // Run animations on all devices - recreates when isDesktop changes
     useGSAP(() => {
-        const isMobile = window.innerWidth <= 768;
+        const isMobile = !isDesktop;
 
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -284,7 +306,7 @@ const RevolutHero = () => {
         }
 
 
-    }, { scope: container });
+    }, { scope: container, dependencies: [isDesktop] });
 
     return (
         <>
