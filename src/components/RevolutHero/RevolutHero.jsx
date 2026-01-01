@@ -76,13 +76,13 @@ const RevolutHero = () => {
         if (isMobile) {
             tl.fromTo(expandingBox.current,
                 {
-                    width: 320,
-                    height: 460,
+                    width: 340,
+                    height: 540,
                     borderRadius: 20,
                 },
                 {
-                    width: 260,
-                    height: 340,
+                    width: 300,
+                    height: 450,
                     borderRadius: 28,
                     boxShadow: "0 20px 80px rgba(0,0,0,0.12)",
                     duration: 1.4,
