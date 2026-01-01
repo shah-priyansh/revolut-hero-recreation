@@ -18,7 +18,9 @@ const RevolutHero = () => {
     const rightCard = useRef();
     const card4 = useRef();
     const card5 = useRef();
+    const cardsGrid = useRef();
     const description = useRef();
+    const cardsSectionHeader = useRef();
     const [scrollY, setScrollY] = useState(0);
 
     // Track scroll position
@@ -60,12 +62,20 @@ const RevolutHero = () => {
             ease: "power2.inOut"
         }, 0);
 
-        // 2. The background image layer fades to white
+        // 2. The background image layer fades to blue
         tl.to(backgroundFade.current, {
             opacity: 0,
-            duration: 1.0, // Reduced from 1.5 to 1.0
+            duration: 1.0,
             ease: "power1.inOut"
         }, 0);
+
+        // 2.5. Cards section header fades in
+        tl.to(cardsSectionHeader.current, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        }, 0.3);
 
         // 3. The "Box" fades in and shrinks down from full-screen to card size
         tl.fromTo(expandingBox.current,
@@ -209,7 +219,11 @@ const RevolutHero = () => {
                 }, 3.0);
 
         } else {
-            // Desktop: Slide in from sides
+            // Desktop: Carousel-style animation
+            // Card width + gap for shifting calculations
+            const cardShift = 372; // 340px card + 32px gap
+
+            // Phase 1: Left and right cards slide in (3 cards visible: left, center, right)
             tl.to(leftCard.current, {
                 x: 0,
                 y: 0,
@@ -228,24 +242,44 @@ const RevolutHero = () => {
                 ease: "back.out(1.4)"
             }, 0.6);
 
-            // Cards 4, 5, 6 slide in from right after initial cards
+            // Phase 2: Card 4 enters - shift entire grid left, card 4 fades in
             tl.to(card4.current, {
                 x: 0,
-                y: 0,
                 opacity: 1,
                 scale: 1,
-                duration: 0.7,
-                ease: "back.out(1.4)"
-            }, 0.9);
+                duration: 0.8,
+                ease: "power2.out"
+            }, 1.5);
 
+            // Shift entire grid left when card 4 enters
+            tl.to(cardsGrid.current, {
+                x: -cardShift,
+                duration: 0.8,
+                ease: "power2.out"
+            }, 1.5);
+
+            // Phase 3: Card 5 enters - shift grid more, card 5 fades in
             tl.to(card5.current, {
                 x: 0,
-                y: 0,
                 opacity: 1,
                 scale: 1,
-                duration: 0.7,
-                ease: "back.out(1.4)"
-            }, 1.0);
+                duration: 0.8,
+                ease: "power2.out"
+            }, 2.3);
+
+            // Shift entire grid left again when card 5 enters
+            tl.to(cardsGrid.current, {
+                x: -cardShift * 2,
+                duration: 0.8,
+                ease: "power2.out"
+            }, 2.3);
+
+            // Fade out left card as it goes off screen
+            tl.to(leftCard.current, {
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.out"
+            }, 2.3);
 
         }
 
@@ -257,8 +291,8 @@ const RevolutHero = () => {
             {/* Floating Scroll Indicator */}
             <div style={{
                 position: 'fixed',
-                top: '20px',
-                right: '20px',
+                bottom: '20px',
+                left: '20px',
                 background: 'rgba(0, 0, 0, 0.8)',
                 color: 'white',
                 padding: '12px 20px',
@@ -317,12 +351,15 @@ const RevolutHero = () => {
                         </motion.button>
                     </div>
 
+                    {/* Cards Section Title */}
+                    <div className="cards-section-header" ref={cardsSectionHeader}>
+                        <h2 className="cards-section-title">Luxury trading, reimagined</h2>
+                        <p className="cards-section-subtitle">Speed, convenience and security like never before</p>
+                    </div>
+
                     <div className="animation-viewport">
-                        <div className="cards-grid">
-                            {/* Main Shrinking Box */}
-
-
-                            {/* Left Card */}
+                        <div className="cards-grid" ref={cardsGrid}>
+                            {/* Card 1 - Get Immediate Cash */}
                             <div className="side-card card-left" ref={leftCard}>
                                 <img
                                     className="box-inner-image"
@@ -337,6 +374,7 @@ const RevolutHero = () => {
                                 </div>
                             </div>
 
+                            {/* Card 2 - Girl (expanding box) - CENTERED */}
                             <div className="expanding-box" ref={expandingBox}>
                                 <img
                                     className="box-inner-image"
@@ -344,9 +382,6 @@ const RevolutHero = () => {
                                     alt="Hero"
                                     ref={innerImage}
                                 />
-
-
-
                                 <div className="ui-overlay ui-bottom">
                                     <div className="card-notification">
                                         <div className="card-notification-title">Get The Highest Prices</div>
@@ -355,7 +390,7 @@ const RevolutHero = () => {
                                 </div>
                             </div>
 
-                            {/* Right Card */}
+                            {/* Card 3 - Track value */}
                             <div className="side-card card-right" ref={rightCard}>
                                 <img
                                     className="box-inner-image"
