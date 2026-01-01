@@ -34,8 +34,8 @@ body {
 
 @media (max-width: 768px) {
   .hero-wrapper {
-    height: auto;
-    min-height: auto;
+    height: 300vh;
+    min-height: 300vh;
   }
 }
 
@@ -715,76 +715,79 @@ body {
   }
 
   .sticky-container {
-    position: relative;
-    overflow: visible;
-    height: auto;
-    min-height: auto;
-    padding-bottom: 0;
-    padding-top: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .background-base {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 0;
   }
 
   .background-image-fade {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
   }
 
   .animation-viewport {
-    position: relative;
+    position: absolute;
     width: 100%;
-    height: auto;
+    height: 100%;
+    display: flex;
     align-items: center;
-    padding: 40px 16px;
-    overflow: visible;
-    margin-top: 0;
-    order: 2;
-    background: white;
+    justify-content: center;
+    z-index: 10;
   }
 
   .cards-grid {
     flex-direction: column;
-    gap: 20px;
-    padding: 0 16px;
+    gap: 16px;
+    padding: 0 20px;
     align-items: center;
-    margin-top: 0;
     width: 100%;
   }
 
-  /* Disable animations on mobile - set final states */
+  /* Mobile animations - allow GSAP to control */
   .expanding-box {
-    order: 3;
     flex-shrink: 0;
-    width: 100% !important;
     max-width: 320px;
-    height: 400px !important;
-    border-radius: 24px !important;
-    opacity: 1 !important;
-    box-shadow: 0 20px 80px rgba(0,0,0,0.12) !important;
     margin: 0 auto;
+    opacity: 0;
+    /* GSAP will animate these */
   }
 
   .box-inner-image {
-    transform: scale(1) !important;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
     object-fit: cover;
   }
 
   .side-card {
-    width: 100%;
-    max-width: 320px;
-    height: 300px;
-    min-height: 300px;
+    width: 260px;
+    height: 340px;
     padding: 0;
-    border-radius: 20px;
-    opacity: 1 !important;
-    transform: translateX(0) translateY(0) scale(1) !important;
+    border-radius: 28px;
+    opacity: 0;
+    transform: translateY(50px);
   }
 
   .side-card .box-inner-image {
@@ -797,51 +800,31 @@ body {
   }
 
   .card-left {
-    order: 1;
-  }
-
-  .card-left:nth-of-type(2) {
-    order: 2;
-  }
-
-  .expanding-box {
-    order: 3;
+    transform: translateY(50px);
   }
 
   .card-right {
-    order: 4;
-  }
-
-  .card-right:nth-of-type(2) {
-    order: 5;
-  }
-
-  .ui-overlay {
-    opacity: 1 !important;
+    transform: translateY(50px);
   }
 
   .ui-overlay.ui-top {
-    top: 8% !important;
+    top: 8%;
   }
 
   .ui-overlay.ui-bottom {
-    bottom: 6% !important;
+    bottom: 6%;
   }
 
   .description-text {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    right: 5%;
     text-align: left;
     max-width: 100%;
     margin: 0;
-    padding: 40px 16px;
-    opacity: 1 !important;
-    z-index: 10;
-    background: white;
-    order: 1;
-    padding-top: 80px;
+    padding: 16px;
+    z-index: 21;
   }
 
   .hero-main-text {

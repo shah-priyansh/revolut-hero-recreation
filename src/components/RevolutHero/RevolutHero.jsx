@@ -29,71 +29,16 @@ const RevolutHero = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Set initial states for mobile (no animations)
+    // Set initial zoomed-in state for desktop
     useEffect(() => {
-        const isMobile = window.innerWidth <= 768;
-
-        if (isMobile) {
-            // Set all elements to their final state immediately on mobile
-            if (expandingBox.current) {
-                gsap.set(expandingBox.current, {
-                    width: 260,
-                    height: 340,
-                    borderRadius: 28,
-                    opacity: 1,
-                    boxShadow: "0 20px 80px rgba(0,0,0,0.12)"
-                });
-            }
-
-            if (innerImage.current) {
-                gsap.set(innerImage.current, { scale: 0.7 });
-            }
-
-            if (leftCard.current) {
-                gsap.set(leftCard.current, {
-                    x: 0,
-                    y: 0,
-                    opacity: 1,
-                    scale: 1
-                });
-            }
-
-            if (rightCard.current) {
-                gsap.set(rightCard.current, {
-                    x: 0,
-                    y: 0,
-                    opacity: 1,
-                    scale: 1
-                });
-            }
-
-
-            if (description.current) {
-                gsap.set(description.current, { opacity: 1 });
-            }
-
-            if (backgroundFade.current) {
-                gsap.set(backgroundFade.current, {
-                    opacity: 1,
-                    scale: 1.0
-                });
-            }
-        } else {
-            // Set initial zoomed-in state for desktop
-            if (innerImage.current) {
-                gsap.set(innerImage.current, { scale: 1.5 }); // Reduced from 2.2 to 1.5
-            }
+        if (innerImage.current) {
+            gsap.set(innerImage.current, { scale: 1.5 });
         }
     }, []);
 
-    // Only run animations on desktop
+    // Run animations on all devices
     useGSAP(() => {
         const isMobile = window.innerWidth <= 768;
-
-        // Skip animations on mobile
-        if (isMobile) {
-            return;
-        }
 
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -127,20 +72,38 @@ const RevolutHero = () => {
             0
         );
 
-        tl.fromTo(expandingBox.current,
-            {
-                width: 420,
-                height: 600,
-                borderRadius: 20,
-            },
-            {
-                width: 340,
-                height: 480,
-                borderRadius: 40,
-                boxShadow: "0 20px 80px rgba(0,0,0,0.12)",
-                duration: 1.4,
-                ease: "expo.inOut"
-            }, 0);
+        // Box shrinking animation - different sizes for mobile vs desktop
+        if (isMobile) {
+            tl.fromTo(expandingBox.current,
+                {
+                    width: 320,
+                    height: 460,
+                    borderRadius: 20,
+                },
+                {
+                    width: 260,
+                    height: 340,
+                    borderRadius: 28,
+                    boxShadow: "0 20px 80px rgba(0,0,0,0.12)",
+                    duration: 1.4,
+                    ease: "expo.inOut"
+                }, 0);
+        } else {
+            tl.fromTo(expandingBox.current,
+                {
+                    width: 420,
+                    height: 600,
+                    borderRadius: 20,
+                },
+                {
+                    width: 340,
+                    height: 480,
+                    borderRadius: 40,
+                    boxShadow: "0 20px 80px rgba(0,0,0,0.12)",
+                    duration: 1.4,
+                    ease: "expo.inOut"
+                }, 0);
+        }
 
         // 4. The image inside the box ZOOMS OUT
         tl.fromTo(innerImage.current,
@@ -148,24 +111,46 @@ const RevolutHero = () => {
             { scale: 0.9, duration: 1.4, ease: "expo.inOut" }, // Scaled down by 10%
             0);
 
-        // 5. Side cards slide in
-        tl.to(leftCard.current, {
-            x: 0,
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 0.7, // Reduced from 1 to 0.7
-            ease: "back.out(1.4)"
-        }, 0.6); // Reduced delay from 0.8 to 0.6
+        // 5. Side cards slide in (desktop) or fade in from below (mobile)
+        if (isMobile) {
+            // Mobile: Fade in from below
+            tl.fromTo(leftCard.current,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.7,
+                    ease: "power2.out"
+                }, 0.8);
 
-        tl.to(rightCard.current, {
-            x: 0,
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 0.7, // Reduced from 1 to 0.7
-            ease: "back.out(1.4)"
-        }, 0.6); // Reduced delay from 0.8 to 0.6
+            tl.fromTo(rightCard.current,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.7,
+                    ease: "power2.out"
+                }, 0.9);
+        } else {
+            // Desktop: Slide in from sides
+            tl.to(leftCard.current, {
+                x: 0,
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.7,
+                ease: "back.out(1.4)"
+            }, 0.6);
+
+            tl.to(rightCard.current, {
+                x: 0,
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.7,
+                ease: "back.out(1.4)"
+            }, 0.6);
+        }
 
 
     }, { scope: container });
