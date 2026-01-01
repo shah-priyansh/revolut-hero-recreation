@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -17,6 +17,17 @@ const RevolutHero = () => {
     const leftCard = useRef();
     const rightCard = useRef();
     const description = useRef();
+    const [scrollY, setScrollY] = useState(0);
+
+    // Track scroll position
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     // Set initial states for mobile (no animations)
     useEffect(() => {
@@ -35,7 +46,7 @@ const RevolutHero = () => {
             }
 
             if (innerImage.current) {
-                gsap.set(innerImage.current, { scale: 1.0 });
+                gsap.set(innerImage.current, { scale: 0.7 });
             }
 
             if (leftCard.current) {
@@ -62,9 +73,9 @@ const RevolutHero = () => {
             }
 
             if (backgroundFade.current) {
-                gsap.set(backgroundFade.current, { 
+                gsap.set(backgroundFade.current, {
                     opacity: 1,
-                    scale: 1.0 
+                    scale: 1.0
                 });
             }
         } else {
@@ -116,19 +127,25 @@ const RevolutHero = () => {
             0
         );
 
-        tl.to(expandingBox.current, {
-            width: 380,
-            height: 560,
-            borderRadius: 40,
-            boxShadow: "0 20px 80px rgba(0,0,0,0.12)",
-            duration: 1.4, // Reduced from 2 to 1.4
-            ease: "expo.inOut"
-        }, 0);
+        tl.fromTo(expandingBox.current,
+            {
+                width: 420,
+                height: 600,
+                borderRadius: 20,
+            },
+            {
+                width: 340,
+                height: 480,
+                borderRadius: 40,
+                boxShadow: "0 20px 80px rgba(0,0,0,0.12)",
+                duration: 1.4,
+                ease: "expo.inOut"
+            }, 0);
 
         // 4. The image inside the box ZOOMS OUT
         tl.fromTo(innerImage.current,
-            { scale: 1.0 }, // Reduced from 2.2 to 1.5 for less zoom
-            { scale: 1.0, duration: 1.4, ease: "expo.inOut" }, // Reduced from 2 to 1.4
+            { scale: 1.09 }, // Start 5% bigger
+            { scale: 0.9, duration: 1.4, ease: "expo.inOut" }, // Scaled down by 10%
             0);
 
         // 5. Side cards slide in
@@ -155,6 +172,24 @@ const RevolutHero = () => {
 
     return (
         <>
+            {/* Floating Scroll Indicator */}
+            <div style={{
+                position: 'fixed',
+                top: '20px',
+                right: '20px',
+                background: 'rgba(0, 0, 0, 0.8)',
+                color: 'white',
+                padding: '12px 20px',
+                borderRadius: '8px',
+                fontFamily: 'monospace',
+                fontSize: '14px',
+                zIndex: 9999,
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)'
+            }}>
+                Scroll: {scrollY}px
+            </div>
+
             <div className="hero-wrapper" ref={container}>
                 <Header />
                 <div className="sticky-container">
@@ -169,7 +204,7 @@ const RevolutHero = () => {
                     ></div>
 
                     <div className="description-text" ref={description}>
-                        <motion.h1 
+                        <motion.h1
                             className="hero-main-text"
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -180,7 +215,7 @@ const RevolutHero = () => {
                             <span className="highlight-text">sell your watch for immediate cash</span>
                             {' '}at the highest prices… with options to buy back
                         </motion.h1>
-                        <motion.p 
+                        <motion.p
                             className="hero-sub-text"
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -189,7 +224,7 @@ const RevolutHero = () => {
                         >
                             End-to-end Global Trading of Luxury Watches with guaranteed protection
                         </motion.p>
-                        <motion.button 
+                        <motion.button
                             className="cta-button"
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
