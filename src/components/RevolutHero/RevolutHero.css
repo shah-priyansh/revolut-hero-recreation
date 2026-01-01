@@ -457,10 +457,12 @@ body {
   transform-origin: center center;
 }
 
-/* Align expanding box image with background */
-.expanding-box .box-inner-image {
-  left: -15%;
-  top: -8%;
+/* Align expanding box image with background - desktop only */
+@media (min-width: 769px) {
+  .expanding-box .box-inner-image {
+    left: -15%;
+    top: -8%;
+  }
 }
 
 .side-card {
@@ -831,6 +833,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 0;
   }
 
   /* Mobile animations - allow GSAP to control */
