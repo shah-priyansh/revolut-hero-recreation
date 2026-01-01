@@ -16,6 +16,8 @@ const RevolutHero = () => {
     const innerImage = useRef();
     const leftCard = useRef();
     const rightCard = useRef();
+    const card4 = useRef();
+    const card5 = useRef();
     const description = useRef();
     const [scrollY, setScrollY] = useState(0);
 
@@ -161,6 +163,51 @@ const RevolutHero = () => {
                     duration: 0.8,
                     ease: "power2.out"
                 }, 2.0);
+
+            // Mobile: Cards 4, 5 slide in from right
+            gsap.set(card4.current, { xPercent: -50, yPercent: -50 });
+            gsap.set(card5.current, { xPercent: -50, yPercent: -50 });
+
+            tl.fromTo(card4.current,
+                {
+                    opacity: 0,
+                    x: window.innerWidth,
+                    scale: 1,
+                    width: 300,
+                    height: 520,
+                    borderRadius: 28
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    scale: 1,
+                    width: 300,
+                    height: 520,
+                    borderRadius: 28,
+                    duration: 0.8,
+                    ease: "power2.out"
+                }, 2.5);
+
+            tl.fromTo(card5.current,
+                {
+                    opacity: 0,
+                    x: window.innerWidth,
+                    scale: 1,
+                    width: 300,
+                    height: 520,
+                    borderRadius: 28
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    scale: 1,
+                    width: 300,
+                    height: 520,
+                    borderRadius: 28,
+                    duration: 0.8,
+                    ease: "power2.out"
+                }, 3.0);
+
         } else {
             // Desktop: Slide in from sides
             tl.to(leftCard.current, {
@@ -180,6 +227,26 @@ const RevolutHero = () => {
                 duration: 0.7,
                 ease: "back.out(1.4)"
             }, 0.6);
+
+            // Cards 4, 5, 6 slide in from right after initial cards
+            tl.to(card4.current, {
+                x: 0,
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.7,
+                ease: "back.out(1.4)"
+            }, 0.9);
+
+            tl.to(card5.current, {
+                x: 0,
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.7,
+                ease: "back.out(1.4)"
+            }, 1.0);
+
         }
 
 
@@ -298,10 +365,41 @@ const RevolutHero = () => {
                                 <div className="ui-overlay ui-bottom">
                                     <div className="card-notification">
                                         <div className="card-notification-title">Track value of your collection in real-time</div>
-                                        <div className="card-notification-subtitle">With our free Watch Collector’s App</div>
+                                        <div className="card-notification-subtitle">With our free Watch Collector's App</div>
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Card 4 - Authenticate */}
+                            <div className="side-card card-4" ref={card4}>
+                                <img
+                                    className="box-inner-image"
+                                    src="/images/authenticate.png"
+                                    alt="Authenticate"
+                                />
+                                <div className="ui-overlay ui-bottom">
+                                    <div className="card-notification">
+                                        <div className="card-notification-title">Authenticate before you Buy</div>
+                                        <div className="card-notification-subtitle">Through our network of certified Watch Makers</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Card 5 - Bank Vault */}
+                            <div className="side-card card-5" ref={card5}>
+                                <img
+                                    className="box-inner-image"
+                                    src="/images/bank-vault.png"
+                                    alt="Bank Vault Storage"
+                                />
+                                <div className="ui-overlay ui-bottom">
+                                    <div className="card-notification">
+                                        <div className="card-notification-title">Bank-Vault Storage</div>
+                                        <div className="card-notification-subtitle">Secure, Insured & tamper proof</div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
