@@ -3,6 +3,8 @@ import Footer from '../components/Footer/Footer';
 import React, { useState } from "react";
 import { motion } from 'framer-motion';
 import './ContactUs.css';
+import SEO from '../components/SEO/SEO';
+import StructuredData from '../components/SEO/StructuredData';
 
 // Accordion Component
 const Accordion = () => {
@@ -70,6 +72,63 @@ const Accordion = () => {
 };
 
 export default function ContactUs() {
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState({ type: '', text: '' });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setMessage({ type: '', text: '' });
+
+        try {
+            const response = await fetch('http://localhost:3001/api/submit-contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setMessage({ type: 'success', text: data.message });
+                // Reset form
+                setFormData({
+                    fullName: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+            } else {
+                setMessage({ type: 'error', text: data.message });
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setMessage({
+                type: 'error',
+                text: 'Failed to submit message. Please try again later.'
+            });
+        } finally {
+            setLoading(false);
+        }
+    };
+
     // Animation variants
     const fadeInUp = {
         hidden: { opacity: 0, y: 50 },
@@ -127,7 +186,19 @@ export default function ContactUs() {
     };
 
     return (
-        <div className="min-h-screen bg-white">
+        <>
+            <SEO
+                title="Contact iLock Secure - Luxury Watch Trading Support | Dubai"
+                description="Get in touch with iLock's expert team. Based in Dubai DIFC, we provide 24/7 support for luxury watch trading, valuations, and secure transactions. Contact us today."
+                keywords="contact iLock, luxury watch support, Dubai DIFC watch traders, watch trading contact, iLock support team"
+                canonical="/contact"
+                ogTitle="Contact iLock - Expert Luxury Watch Trading Support"
+                ogDescription="Reach our team of luxury watch experts based in Dubai DIFC. Get support for valuations, trading, authentication, and secure transactions."
+                ogUrl="https://ilocksecure.com/contact"
+            />
+            <StructuredData type="localBusiness" />
+
+            <div className="min-h-screen bg-white">
 
             {/*<div className="w-[100%] sm:w-[100%] md:w-[100%] lg:w-[100%] xl:w-[85%] mx-auto py-10 xl:py-32 px-3">
                 <div className="text-center mb-12">
@@ -339,7 +410,7 @@ export default function ContactUs() {
                 animate="visible"
                 variants={fadeInUp}
             >
-                <img src="/images/contact-banner.png" className={'img-fluid'} alt="Contact Banner"/>
+                <img src="/images/contact-banner.jpg" className={'img-fluid'} alt="Contact Banner"/>
                 <motion.div 
                     className={'page-content text-center text-white'}
                     variants={staggerContainer}
@@ -378,62 +449,99 @@ export default function ContactUs() {
                                         <h3>Send us a Message</h3>
                                     </motion.div>
                                     <motion.form
+                                        onSubmit={handleSubmit}
                                         variants={staggerContainer}
                                         initial="hidden"
                                         whileInView="visible"
                                         viewport={{ once: true }}
                                     >
-                                        <motion.div 
+                                        {message.text && (
+                                            <motion.div
+                                                className={`alert ${message.type === 'success' ? 'alert-success' : 'alert-danger'} mb-4`}
+                                                initial={{ opacity: 0, y: -20 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                            >
+                                                {message.text}
+                                            </motion.div>
+                                        )}
+                                        <motion.div
                                             className={'mb-4 form-group'}
                                             variants={cardAnimation}
                                         >
-                                            <label>Full Name</label>
+                                            <label>Full Name *</label>
                                             <input
                                                 type={'text'}
+                                                name="fullName"
                                                 className="form-control"
                                                 placeholder="Enter your full name"
+                                                value={formData.fullName}
+                                                onChange={handleInputChange}
+                                                required
                                             />
                                         </motion.div>
-                                        <motion.div 
+                                        <motion.div
                                             className={'mb-4 form-group'}
                                             variants={cardAnimation}
                                         >
-                                            <label>Email Address</label>
+                                            <label>Email Address *</label>
                                             <input
                                                 type={'email'}
+                                                name="email"
                                                 className="form-control"
                                                 placeholder="your.email@example.com"
+                                                value={formData.email}
+                                                onChange={handleInputChange}
+                                                required
                                             />
                                         </motion.div>
-                                        <motion.div 
+                                        <motion.div
                                             className={'mb-4 form-group'}
                                             variants={cardAnimation}
                                         >
-                                            <label>Subject</label>
-                                            <select className={'form-control'}>
-                                                <option>General Question</option>
+                                            <label>Subject *</label>
+                                            <select
+                                                className={'form-control'}
+                                                name="subject"
+                                                value={formData.subject}
+                                                onChange={handleInputChange}
+                                                required
+                                            >
+                                                <option value="">Select a subject</option>
+                                                <option value="General Question">General Question</option>
+                                                <option value="Watch Valuation">Watch Valuation</option>
+                                                <option value="Selling Process">Selling Process</option>
+                                                <option value="Payment Inquiry">Payment Inquiry</option>
+                                                <option value="Technical Support">Technical Support</option>
+                                                <option value="Other">Other</option>
                                             </select>
                                         </motion.div>
-                                        <motion.div 
+                                        <motion.div
                                             className={'mb-4 form-group'}
                                             variants={cardAnimation}
                                         >
-                                            <label>Message</label>
-                                            <textarea className={'form-control'} rows={'4'}
-                                                      placeholder={'Tell us how we can help...'}>
-
-                                            </textarea>
+                                            <label>Message *</label>
+                                            <textarea
+                                                className={'form-control'}
+                                                rows={'4'}
+                                                name="message"
+                                                placeholder={'Tell us how we can help...'}
+                                                value={formData.message}
+                                                onChange={handleInputChange}
+                                                required
+                                            />
                                         </motion.div>
-                                        <motion.div 
+                                        <motion.div
                                             className={'mb-4 form-btn-div'}
                                             variants={cardAnimation}
                                         >
-                                            <motion.button 
+                                            <motion.button
+                                                type="submit"
                                                 className={'btn'}
                                                 whileHover={{ scale: 1.05 }}
                                                 whileTap={{ scale: 0.95 }}
+                                                disabled={loading}
                                             >
-                                                Send Request
+                                                {loading ? 'Sending...' : 'Send Request'}
                                             </motion.button>
                                         </motion.div>
                                     </motion.form>
@@ -498,7 +606,7 @@ export default function ContactUs() {
                                         </div>
                                         <div className={'contact-detail-box'}>
                                             <h4>Email Support</h4>
-                                            <p>concierge@ilock.com</p>
+                                            <p>info@ilocksecure.com</p>
                                             <span>We respond within 24 hours</span>
                                         </div>
                                     </motion.div>
@@ -634,7 +742,7 @@ export default function ContactUs() {
 
             <Footer />
         </div>
-
+        </>
     );
 }
 

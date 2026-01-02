@@ -1,6 +1,6 @@
-# Revolut Hero Recreation
+# iLock Website
 
-A React recreation of the Revolut-style hero section with scroll-based animations using GSAP and ScrollTrigger.
+A modern React website for iLock with scroll-based animations using GSAP and ScrollTrigger.
 
 ## Features
 
@@ -46,8 +46,8 @@ npm run build
 
 ```
 src/
-├── RevolutHero.jsx    # Main hero component with GSAP animations
-├── RevolutHero.css    # Styles for the hero section
+├── HeroSection.jsx    # Main hero component with GSAP animations
+├── HeroSection.css    # Styles for the hero section
 ├── App.jsx            # App entry point
 └── main.jsx           # React DOM render
 ```

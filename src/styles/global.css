@@ -1300,7 +1300,7 @@ h1,h2,h3,h4,h5,h6 {
     }
 }
 
-/* Revolut Hero Component Styles */
+/* Hero Section Component Styles */
 .revolut-hero-section {
     position: relative;
     width: 100%;
@@ -1742,7 +1742,7 @@ h1,h2,h3,h4,h5,h6 {
 .attach-box {
     border: 2px dashed #D1D5DB !important;
 }
-/* Responsive Styles for Revolut Hero */
+/* Responsive Styles for Hero Section */
 @media screen and (max-width: 1654px) {
     .revolut-hero-image-main {
         width: 100%;

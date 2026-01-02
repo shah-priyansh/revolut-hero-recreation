@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import SEO from '../SEO/SEO';
 
 export default function AboutUs() {
     // Animation variants
@@ -60,9 +61,20 @@ export default function AboutUs() {
     };
 
     return (
-        <div style={{minHeight: '100vh'}}>
-            {/* Header */}
-            <Header />
+        <>
+            <SEO
+                title="About iLock Secure - Redefining Global Luxury Watch Trading"
+                description="Learn how iLock revolutionized luxury watch trading with our secure global auction platform. Trusted by collectors worldwide for authentication, highest prices, and buyback options."
+                keywords="luxury watch trading company, authenticated watch platform, secure watch marketplace, global watch auction, iLock about us"
+                canonical="/about"
+                ogTitle="About iLock - Trusted Global Luxury Watch Trading Platform"
+                ogDescription="Discover how iLock combines cutting-edge technology with expert authentication to deliver the highest prices for luxury watches. Join thousands of satisfied collectors worldwide."
+                ogUrl="https://ilocksecure.com/about"
+            />
+
+            <div style={{minHeight: '100vh'}}>
+                {/* Header */}
+                <Header />
 
             <motion.div 
                 className={'page-banner position-relative'}
@@ -70,7 +82,7 @@ export default function AboutUs() {
                 animate="visible"
                 variants={fadeInUp}
             >
-                <img src="/images/about-banner.png" className={'img-fluid'} alt="About Banner"/>
+                <img src="/images/about-banner.jpg" className={'img-fluid'} alt="About Banner"/>
                 <motion.div 
                     className={'page-content text-center text-white'}
                     variants={staggerContainer}
@@ -99,7 +111,7 @@ export default function AboutUs() {
                             variants={fadeInLeft}
                         >
                             <motion.img
-                                src="/images/our-mission.png"
+                                src="/images/our-mission.jpg"
                                 className={'img-fluid'}
                                 alt="Our Mission"
                                 style={{ borderRadius: '30px' }}
@@ -736,7 +748,7 @@ export default function AboutUs() {
                                 whileHover={{scale: 1.05}}
                                 transition={{duration: 0.3}}
                             >
-                                <img src="/images/securty.png" className="img-fluid w-100" style={{objectFit: 'cover'}}
+                                <img src="/images/securty.jpg" className="img-fluid w-100" style={{objectFit: 'cover'}}
                                      alt="Security"/>
                             </motion.div>
                         </motion.div>
@@ -792,5 +804,6 @@ export default function AboutUs() {
 
             <Footer />
         </div>
+        </>
     );
 }

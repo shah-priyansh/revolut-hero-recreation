@@ -1,31 +1,87 @@
 import { motion } from "framer-motion";
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './LandingPage.css';
 import Footer from "../Footer/Footer";
+import SEO from '../SEO/SEO';
 
 export default function LandingPage() {
     const [formData, setFormData] = useState({
         watchBrand: '',
         modelName: '',
-        condition: '',
-        fullName: '',
-        email: '',
         phone: '',
-        agreeToTerms: false
+        email: '',
+        photos: []
     });
 
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState({ type: '', text: '' });
+
     const handleInputChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: type === 'checkbox' ? checked : value
-        }));
+        const { name, value, type, files } = e.target;
+        if (type === 'file') {
+            setFormData(prev => ({
+                ...prev,
+                photos: Array.from(files)
+            }));
+        } else {
+            setFormData(prev => ({
+                ...prev,
+                [name]: value
+            }));
+        }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Handle form submission
+        setLoading(true);
+        setMessage({ type: '', text: '' });
+
+        try {
+            // Create FormData for file upload
+            const submitData = new FormData();
+            submitData.append('watchBrand', formData.watchBrand);
+            submitData.append('modelName', formData.modelName);
+            submitData.append('phone', formData.phone);
+            submitData.append('email', formData.email);
+            if (formData.photos.length > 0) {
+                formData.photos.forEach((photo) => {
+                    submitData.append('photos', photo);
+                });
+            }
+
+            const response = await fetch('http://localhost:3001/api/submit-valuation', {
+                method: 'POST',
+                body: submitData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setMessage({ type: 'success', text: data.message });
+                // Reset form
+                setFormData({
+                    watchBrand: '',
+                    modelName: '',
+                    phone: '',
+                    email: '',
+                    photos: []
+                });
+                // Reset file input
+                const fileInput = document.getElementById('Upload_Photo');
+                if (fileInput) fileInput.value = '';
+            } else {
+                setMessage({ type: 'error', text: data.message });
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setMessage({
+                type: 'error',
+                text: 'Failed to submit request. Please try again later.'
+            });
+        } finally {
+            setLoading(false);
+        }
     };
 
     // Animation variants
@@ -85,10 +141,21 @@ export default function LandingPage() {
     };
 
     return (
-        <div className="landing-page">
+        <>
+            <SEO
+                title="Free Luxury Watch Valuation - Get Instant Cash Offer | iLock Secure"
+                description="Get a free, no-obligation valuation for your luxury watch in minutes. Upload photos, receive competitive offers from global dealers. Rolex, AP, Patek Philippe & all luxury brands."
+                keywords="luxury watch valuation, free watch appraisal, sell my Rolex, watch price estimate, luxury timepiece quote, online watch valuation"
+                canonical="/landing"
+                ogTitle="Free Watch Valuation - Discover Your Watch's True Value | iLock"
+                ogDescription="Upload your watch details and photos to receive instant competitive offers from verified global dealers. Simple, secure, and free."
+                ogUrl="https://ilocksecure.com/landing"
+            />
+
+            <div className="landing-page">
 
             <div className={'landing-form-div py-5'}
-                 style={{backgroundImage: `url('/images/landing-img.png')`}}
+                 style={{backgroundImage: `url('/images/landing-img.jpg')`}}
             >
                 <div className={'container py-5'}>
                     <div className={'row'}>
@@ -100,8 +167,10 @@ export default function LandingPage() {
                                     animate="visible"
                                     variants={fadeInUp}
                                 >
-                                    <img src="/images/logo.svg" alt={'img'} width={'250'}
-                                         className={'img-fluid'}/>
+                                    <Link to="/">
+                                        <img src="/images/logo.svg" alt={'img'} width={'250'}
+                                             className={'img-fluid'}/>
+                                    </Link>
                                 </motion.div>
                                 <motion.div
                                     className={'lf-content mb-3 mb-md-5'}
@@ -230,21 +299,57 @@ export default function LandingPage() {
                                         Receive a cash offer in 24 hours
                                     </p>
                                 </div>
-                                <form>
+                                <form onSubmit={handleSubmit}>
+                                    {message.text && (
+                                        <div className={`alert alert-${message.type === 'success' ? 'success' : 'danger'} mb-3`}>
+                                            {message.text}
+                                        </div>
+                                    )}
                                     <div className={'mb-3 form-group'}>
                                         <label>Watch Brand *</label>
-                                        <select className={'form-control'}>
-                                            <option>Select Brand</option>
+                                        <select
+                                            className={'form-control'}
+                                            name="watchBrand"
+                                            value={formData.watchBrand}
+                                            onChange={handleInputChange}
+                                            required
+                                        >
+                                            <option value="">Select Brand</option>
+                                            <option value="Rolex">Rolex</option>
+                                            <option value="Patek Philippe">Patek Philippe</option>
+                                            <option value="Audemars Piguet">Audemars Piguet</option>
+                                            <option value="Omega">Omega</option>
+                                            <option value="Cartier">Cartier</option>
+                                            <option value="TAG Heuer">TAG Heuer</option>
+                                            <option value="Breitling">Breitling</option>
+                                            <option value="IWC">IWC</option>
+                                            <option value="Panerai">Panerai</option>
+                                            <option value="Other">Other</option>
                                         </select>
                                     </div>
                                     <div className={'mb-3 form-group'}>
                                         <label>Model Name *</label>
-                                        <input className={'form-control'} placeholder={'e.g., Submariner, Nautilus'}/>
+                                        <input
+                                            className={'form-control'}
+                                            placeholder={'e.g., Submariner, Nautilus'}
+                                            name="modelName"
+                                            value={formData.modelName}
+                                            onChange={handleInputChange}
+                                            required
+                                        />
                                     </div>
                                     <div className={'mb-3 form-group'}>
-                                        <label>Upload Photo (Optional)</label>
+                                        <label>Upload Photos (Optional)</label>
                                         <div className={'relative'}>
-                                            <input type={'file'} className={'form-control d-none'} id={'Upload_Photo'}/>
+                                            <input
+                                                type={'file'}
+                                                className={'form-control d-none'}
+                                                id={'Upload_Photo'}
+                                                name="photo"
+                                                accept="image/png,image/jpeg,image/jpg"
+                                                onChange={handleInputChange}
+                                                multiple
+                                            />
                                             <label
                                                 className={'attach-box d-flex flex-column gap-1 border border-2 border-dashed rounded-3 p-4 justify-content-center align-items-center'}
                                                 htmlFor={'Upload_Photo'}>
@@ -261,16 +366,51 @@ export default function LandingPage() {
                                                 <div className={'text-sm text-[#4B5563]'}>Click to upload or drag and
                                                     drop
                                                 </div>
-                                                <div className={'text-xs text-[#6B7280]'}>PNG, JPG up to 10MB</div>
+                                                <div className={'text-xs text-[#6B7280]'}>PNG, JPG up to 10MB (Multiple files allowed)</div>
                                             </label>
+                                            {formData.photos.length > 0 && (
+                                                <div className={'mt-3 p-3 bg-light rounded'}>
+                                                    <div className={'text-sm fw-bold mb-2'}>Selected files ({formData.photos.length}):</div>
+                                                    <ul className={'list-unstyled mb-0'}>
+                                                        {formData.photos.map((photo, index) => (
+                                                            <li key={index} className={'text-sm text-muted d-flex align-items-center gap-2'}>
+                                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0ZM8.48528 4.98528L5.48528 7.98528C5.34343 8.12714 5.15657 8.19807 4.96971 8.19807C4.78286 8.19807 4.596 8.12714 4.45414 7.98528L3.45414 6.98528C3.17014 6.70129 3.17014 6.24343 3.45414 5.95943C3.73814 5.67543 4.196 5.67543 4.48 5.95943L4.96971 6.44914L7.45943 3.95943C7.74343 3.67543 8.20129 3.67543 8.48528 3.95943C8.76928 4.24343 8.76928 4.70129 8.48528 4.98528Z" fill="#10B981"/>
+                                                                </svg>
+                                                                {photo.name}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                     <div className={'mb-3 form-group'}>
                                         <label>Phone Number *</label>
-                                        <input className={'form-control'} placeholder={'e.g., Submariner, Nautilus'}/>
+                                        <input
+                                            className={'form-control'}
+                                            placeholder={'e.g., +1 (555) 123-4567'}
+                                            name="phone"
+                                            type="tel"
+                                            value={formData.phone}
+                                            onChange={handleInputChange}
+                                            required
+                                        />
                                     </div>
                                     <div className={'mb-3 form-group'}>
-                                        <button className={'btn'}>
+                                        <label>Email Address *</label>
+                                        <input
+                                            className={'form-control'}
+                                            placeholder={'e.g., you@example.com'}
+                                            name="email"
+                                            type="email"
+                                            value={formData.email}
+                                            onChange={handleInputChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div className={'mb-3 form-group'}>
+                                        <button className={'btn'} type="submit" disabled={loading}>
                                             <svg width="11" height="18" viewBox="0 0 11 18" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -278,7 +418,7 @@ export default function LandingPage() {
                                                     fill="white"/>
                                             </svg>
 
-                                            Get Cash Offer Now
+                                            {loading ? 'Submitting...' : 'Get Cash Offer Now'}
                                         </button>
                                     </div>
                                     <div className={'d-flex gap-2 align-items-center justify-content-center small'}>
@@ -404,7 +544,7 @@ export default function LandingPage() {
                             variants={fadeInRight}
                         >
                             <motion.img
-                                src="/images/custody2.png"
+                                src="/images/custody2.jpg"
                                 className="img-fluid w-100"
                                 alt="Secure Storage"
                                 whileHover={{ scale: 1.05 }}
@@ -888,7 +1028,7 @@ export default function LandingPage() {
                                 whileHover={{scale: 1.05}}
                                 transition={{duration: 0.3}}
                             >
-                                <img src="/images/expert-auth.png" className="img-fluid w-100"
+                                <img src="/images/expert-auth.jpg" className="img-fluid w-100"
                                      style={{objectFit: 'cover'}}
                                      alt="Security"/>
                             </motion.div>
@@ -948,5 +1088,6 @@ export default function LandingPage() {
 
 
         </div>
+        </>
     );
 }
